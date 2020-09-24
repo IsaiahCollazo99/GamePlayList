@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setValue } from './signUpSlice';
 
-const SignUpPage1 = () => {
+const SignUpPage1 = ({ handlePageChange }) => {
     const {
         email,
         password,
@@ -17,11 +17,17 @@ const SignUpPage1 = () => {
         dispatch(setValue({stateToChange, data}));
     }
 
+    const handleSubmit = ( e ) => {
+        e.preventDefault();
+        handlePageChange(2);
+    }
+
     return (
-        <form className="signUpContainer">
+        <form onSubmit={handleSubmit} style={{display: 'flex', flexDirection: 'column', width: '20%'}}>
             <input type="email" value={email} name="email" onChange={handleChange} />
             <input type="password" value={password} name="password" onChange={handleChange} />
             <input type="password" value={confirmPassword} name="confirmPassword" onChange={handleChange} />
+            <button type="submit">Submit</button>
         </form>
     )
 }
