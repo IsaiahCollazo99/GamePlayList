@@ -1,4 +1,8 @@
-import db from '../../db/db';
+const db = require('../../db/db');
+
+// Test query to see if it works in postman
+// Then link backend to frontend
+// Test user post to see if it works from frontend to backend
 
 module.exports = {
     signUp: async ( req, res, next ) => {
