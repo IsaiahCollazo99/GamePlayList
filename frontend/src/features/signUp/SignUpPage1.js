@@ -23,7 +23,7 @@ const SignUpPage1 = ({ handlePageChange }) => {
     }
 
     return (
-        <form onSubmit={handleSubmit} style={{display: 'flex', flexDirection: 'column', width: '20%'}}>
+        <form onSubmit={handleSubmit}>
             <input type="email" value={email} name="email" onChange={handleChange} />
             <input type="password" value={password} name="password" onChange={handleChange} />
             <input type="password" value={confirmPassword} name="confirmPassword" onChange={handleChange} />

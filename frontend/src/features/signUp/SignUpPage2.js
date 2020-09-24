@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setValue } from './signUpSlice';
 
-const SignUpPage2 = ({ handlePageChange }) => {
+const SignUpPage2 = ({ handlePageChange, handleSignUp }) => {
     const {
         username,
         first_name,
@@ -10,14 +10,6 @@ const SignUpPage2 = ({ handlePageChange }) => {
         birthday,
         gender,
     } = useSelector(state => state.signUp);
-
-    console.log({
-        username,
-        first_name,
-        last_name,
-        birthday,
-        gender,
-    });
 
     const dispatch = useDispatch();
 
@@ -28,7 +20,7 @@ const SignUpPage2 = ({ handlePageChange }) => {
     }
     
     return (
-        <form>
+        <form onSubmit={handleSignUp}>
             <input type="text" name="username" value={username} onChange={handleChange} />
             <input type="text" name="first_name" value={first_name} onChange={handleChange} />
             <input type="text" name="last_name" value={last_name} onChange={handleChange} />
@@ -39,6 +31,8 @@ const SignUpPage2 = ({ handlePageChange }) => {
                 <option value="Female">Female</option>
                 <option value="Non-Binary">Non-Binary</option>
             </select>
+            <button type="button" onClick={handlePageChange}>Back</button>
+            <button type="submit">Sign Up</button>
         </form>
     )
 }
