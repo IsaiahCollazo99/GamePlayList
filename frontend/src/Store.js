@@ -1,6 +1,9 @@
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
+import signUp from './features/signUp/signUpSlice';
 
-const reducer = () => {};
+const reducer = {
+    signUp
+};
 const middleware = [...getDefaultMiddleware()];
 
 const Store = configureStore({
