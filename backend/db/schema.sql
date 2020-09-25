@@ -4,7 +4,7 @@ CREATE DATABASE gameplaylist_db;
 \c gameplaylist_db;
 
 DROP TABLE IF EXISTS playlist_games;
-DROP TABLE IF EXISTS playlists;
+DROP TABLE IF EXISTS lists;
 DROP TABLE IF EXISTS users;
 
 CREATE TABLE users (
@@ -18,7 +18,7 @@ CREATE TABLE users (
     gender VARCHAR
 );
 
-CREATE TABLE playlists (
+CREATE TABLE lists (
     id SERIAL PRIMARY KEY,
     playlist_name VARCHAR,
     playlist_owner VARCHAR REFERENCES users(id) ON DELETE CASCADE
