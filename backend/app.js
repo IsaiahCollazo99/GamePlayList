@@ -6,12 +6,14 @@ require("dotenv").config();
 const PORT = process.env.PORT || 3001;
 
 const usersRouter = require("./routes/users/users");
+const listsRouter = require('./routes/lists/lists');
 
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 app.use("/api/users", usersRouter);
+app.use("/api/lists", listsRouter);
 
 app.use((error, req, res, next) => {
     console.log(error);

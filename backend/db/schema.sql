@@ -3,7 +3,7 @@ CREATE DATABASE gameplaylist_db;
 
 \c gameplaylist_db;
 
-DROP TABLE IF EXISTS playlist_games;
+DROP TABLE IF EXISTS list_games;
 DROP TABLE IF EXISTS lists;
 DROP TABLE IF EXISTS users;
 
@@ -20,12 +20,12 @@ CREATE TABLE users (
 
 CREATE TABLE lists (
     id SERIAL PRIMARY KEY,
-    playlist_name VARCHAR,
-    playlist_owner VARCHAR REFERENCES users(id) ON DELETE CASCADE
+    list_name VARCHAR,
+    list_owner VARCHAR REFERENCES users(id) ON DELETE CASCADE
 );
 
-CREATE TABLE playlist_games (
+CREATE TABLE list_games (
     id SERIAL PRIMARY KEY,
-    playlist_id INTEGER REFERENCES playlists(id) ON DELETE CASCADE,
+    list_id INTEGER REFERENCES lists(id) ON DELETE CASCADE,
     game_id INTEGER
 );
