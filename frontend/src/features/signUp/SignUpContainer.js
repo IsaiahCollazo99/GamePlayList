@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { createDefaultLists, signUpUser } from '../../util/apiCalls/postRequests';
+import { firebaseSignUp } from '../../util/firebaseFunctions';
 import SignUpPage1 from './SignUpPage1';
 import SignUpPage2 from './SignUpPage2';
 
@@ -12,10 +13,12 @@ const SignUpContainer = () => {
         setPage(page === 1 ? 2 : 1);
     }
 
-    const handleSignUp = async( e ) => {
+    const handleSignUp = async ( e ) => {
         e.preventDefault();
         try {
-            const data = await signUpUser({...signUp});
+            const firebaseUser = await firebaseSignUp(signUp.email, signUp.password, signUp.username);
+            const signUpData = { ...signUp, id: firebaseUser.uid };
+            const data = await signUpUser({...signUpData});
             const { user } = data;
             await createDefaultLists(user.id);
         } catch ( error ) {

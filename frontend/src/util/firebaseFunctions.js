@@ -5,11 +5,11 @@ firebase.auth().useDeviceLanguage();
 
 export const logout = () => firebase.auth().signOut();
 
-export const login = (email, password) => {
+export const firebaseLogIn = (email, password) => {
 	return firebase.auth().signInWithEmailAndPassword(email, password);
 }
 
-export const signUp = async ( email, password, displayName ) => {
+export const firebaseSignUp = async ( email, password, displayName ) => {
     const { user } = await firebase.auth().createUserWithEmailAndPassword(email, password);
     await user.updateProfile({
         displayName
