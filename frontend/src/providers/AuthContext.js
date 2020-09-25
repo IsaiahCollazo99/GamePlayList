@@ -1,9 +1,7 @@
 import React, { createContext, useState, useEffect } from "react";
 import firebase from "../firebase";
-import Loader from "../images/tour.gif";
-import "./../css/AuthContext/AuthContext.css";
 
-import { getFirebaseIdToken } from "../util/firebaseFunction";
+import { getFirebaseIdToken } from "../util/firebaseFunctions";
 
 export const AuthContext = createContext();
 
@@ -38,7 +36,6 @@ const AuthProvider = ({ children }) => {
 	if (loading)
 		return (
 			<div className="loading">
-				<img src={Loader} alt="loader_image" />
 				<div className="loadingText">Loading...</div>
 			</div>
 		);
