@@ -4,7 +4,9 @@ export const feedPageSlice = createSlice({
     name: "feedPage",
     initialState: {games: []},
     reducers: {
-        add_games: ( ( state, { payload } ) => state.games = payload),
+        add_games: ( ( state, { payload } ) => {
+            state.games.push(...payload);
+        }),
     }
 })
 
