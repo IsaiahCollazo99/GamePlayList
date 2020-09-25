@@ -6,8 +6,8 @@ import SignUpContainer from './features/signUp/SignUpContainer';
 function App() {
   return (
     <div className="App">
-      {/* <SignUpContainer /> */}
-      <FeedPage />
+      <SignUpContainer />
+      {/* <FeedPage /> */}
     </div>
   );
 }

@@ -9,7 +9,7 @@ export const signUpUser = async ( userData ) => {
         userData.id = userId;
         const res = await axios.post(API + "/api/users", userData);
         userId++;
-        console.log(res);
+        return res.data;
     } catch ( error ) {
         throw error;
     }

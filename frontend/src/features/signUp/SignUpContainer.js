@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { signUpUser } from '../../util/apiCalls/postRequests';
+import { createDefaultLists, signUpUser } from '../../util/apiCalls/postRequests';
 import SignUpPage1 from './SignUpPage1';
 import SignUpPage2 from './SignUpPage2';
 
@@ -15,7 +15,9 @@ const SignUpContainer = () => {
     const handleSignUp = async( e ) => {
         e.preventDefault();
         try {
-            await signUpUser({...signUp});
+            const data = await signUpUser({...signUp});
+            const { user } = data;
+            await createDefaultLists(user.id);
         } catch ( error ) {
             console.log(error);
         }
