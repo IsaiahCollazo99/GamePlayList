@@ -8,7 +8,6 @@ import SignUpContainer from './features/signUp/SignUpContainer';
 import AuthProvider from './providers/AuthContext';
 import { AuthRoute } from './util/routesUtil';
 
-// Get Login working
 // Style everything so far
 
 function App() {
