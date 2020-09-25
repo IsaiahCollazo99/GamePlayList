@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
+import { signUpUser } from '../../util/apiCalls/postRequests';
 import SignUpPage1 from './SignUpPage1';
 import SignUpPage2 from './SignUpPage2';
 
@@ -11,9 +12,13 @@ const SignUpContainer = () => {
         setPage(page === 1 ? 2 : 1);
     }
 
-    const handleSignUp = ( e ) => {
+    const handleSignUp = async( e ) => {
         e.preventDefault();
-        console.log(signUp);
+        try {
+            await signUpUser({...signUp});
+        } catch ( error ) {
+            console.log(error);
+        }
     }
 
     const getPageDisplay = () => {
