@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getGames } from '../../util/apiCalls/getRequests';
 import { add_games, set_next } from './feedPageSlice';
 import { useBottomScrollListener } from 'react-bottom-scroll-listener';
+import '../../css/feedPage/feedPage.css';
+import GameCard from '../gameCard/GameCard';
 
 const FeedPage = () => {
     const [ loading, setLoading ] = useState(false);
@@ -31,12 +33,9 @@ const FeedPage = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    const gamesDisplay = feedPage.games.map((game, i) => {
+    const gamesDisplay = feedPage.games.map(( game ) => {
         return (
-            <article>
-                <p key={game.id}>{i}: {game.name}</p>
-                <img src={game.background_image} style={{width: '25%'}} alt={`${game.name} cover`} />
-            </article>
+            <GameCard game={game} key={game.id} />
         )
     })
     
