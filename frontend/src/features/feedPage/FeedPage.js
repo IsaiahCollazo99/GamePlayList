@@ -22,11 +22,16 @@ const FeedPage = () => {
     useEffect(() => {
         getGamesCall()
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+    }, []);
+
+    const gamesDisplay = feedPage.games.map((game, i) => {
+        return <p key={game.id}>{i}: {game.name}</p>
+    })
     
     return (
         <>
-            Feed
+            <button onClick={getGamesCall}>Get New Games</button>
+            {gamesDisplay}
         </>
     )
 }
