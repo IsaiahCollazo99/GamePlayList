@@ -1,0 +1,14 @@
+.gameCard {
+    height: 300px;
+    width: 300px;
+    background-color: #f3f3f3;
+    padding-top: 15px;
+    margin: 10px 0px;
+}
+
+.gameCard img {
+    width: 300px;
+    height: 250px;
+    object-fit: cover;
+    object-position: center;
+}
