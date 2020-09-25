@@ -1,8 +1,10 @@
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 import signUp from './features/signUp/signUpSlice';
+import feedPage from './features/feedPage/feedPageSlice';
 
 const reducer = {
-    signUp
+    signUp,
+    feedPage,
 };
 const middleware = [...getDefaultMiddleware()];
 
