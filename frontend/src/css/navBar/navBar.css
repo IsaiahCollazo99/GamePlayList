@@ -3,3 +3,12 @@ nav {
     flex-direction: row;
     justify-content: space-evenly;
 }
+
+nav a {
+    color: black;
+    text-decoration: none;
+}
+
+nav a:hover {
+    color: green;
+}

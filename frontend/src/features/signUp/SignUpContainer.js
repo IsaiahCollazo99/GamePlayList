@@ -4,6 +4,7 @@ import { createDefaultLists, signUpUser } from '../../util/apiCalls/postRequests
 import { firebaseSignUp } from '../../util/firebaseFunctions';
 import SignUpPage1 from './SignUpPage1';
 import SignUpPage2 from './SignUpPage2';
+import '../../css/signUp/signUp.css';
 
 const SignUpContainer = () => {
     const [ page, setPage ] = useState(1);
@@ -34,9 +35,9 @@ const SignUpContainer = () => {
     }
 
     return (
-        <>
+        <main className="signUpContainer">
             {getPageDisplay()}
-        </>
+        </main>
     )
 }
 
