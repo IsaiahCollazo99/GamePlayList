@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import { AuthContext } from '../../providers/AuthContext';
 import { logout } from '../../util/firebaseFunctions';
+import '../../css/navBar/navBar.css';
 
 const NavBar = () => {
     const { currentUser } = useContext(AuthContext);
