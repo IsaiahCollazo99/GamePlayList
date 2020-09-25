@@ -2,7 +2,7 @@ const { createSlice } = require("@reduxjs/toolkit");
 
 export const signInSlice = createSlice({
     name: "signIn",
-    defaultState: {email: "", password: ""},
+    initialState: {email: "", password: ""},
     reducers: {
         set_value: (( state, { payload } ) => {
             const { stateToChange, data } = payload;

@@ -3,6 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 import './App.css';
 import FeedPage from './features/feedPage/FeedPage';
 import NavBar from './features/navBar/NavBar';
+import SignIn from './features/signIn/SignIn';
 import SignUpContainer from './features/signUp/SignUpContainer';
 import AuthProvider from './providers/AuthContext';
 import { AuthRoute } from './util/routesUtil';
@@ -22,6 +23,10 @@ function App() {
 
       <AuthRoute path="/signup">
         <SignUpContainer />
+      </AuthRoute>
+
+      <AuthRoute path="/login">
+        <SignIn />
       </AuthRoute>
 
       <Route path="/games">
