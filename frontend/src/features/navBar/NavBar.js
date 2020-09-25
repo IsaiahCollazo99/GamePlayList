@@ -16,7 +16,7 @@ const NavBar = () => {
         } else {
             return (
                 <>
-                <NavLink to="login">
+                <NavLink to="/login">
                     Log In
                 </NavLink>
                 
