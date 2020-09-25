@@ -29,7 +29,12 @@ const FeedPage = () => {
     }, []);
 
     const gamesDisplay = feedPage.games.map((game, i) => {
-        return <p key={game.id}>{i}: {game.name}</p>
+        return (
+            <article>
+                <p key={game.id}>{i}: {game.name}</p>
+                <img src={game.background_image} style={{width: '25%'}} alt={`${game.name} cover`} />
+            </article>
+        )
     })
     
     return (
