@@ -2,7 +2,8 @@ import React from 'react';
 import '../../css/gameCard/gameCard.css';
 
 const GameCard = ({ game }) => {
-    const { name, background_image } = game
+    const { name, background_image } = game;
+    
     const getDisplayName = () => {
         if(name.length > 28) {
             return <p>{name.slice(0, 28) + "..."}</p>
