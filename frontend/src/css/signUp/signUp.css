@@ -1,6 +1,8 @@
 .signUpContainer {
     display: flex;
+    height: 95vh;
     flex-direction: column;
+    justify-content: center;
 }
 
 .signUpContainer form {
@@ -13,4 +15,7 @@
 .signUpPage1 {
     height: 40vh;
     justify-content: space-evenly;
+    background-color: #1e375c;
+    padding: 20px 30px;
+    border-radius: 1em;
 }

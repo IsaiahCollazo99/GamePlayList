@@ -2,6 +2,9 @@ nav {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
+    font-size: 24px;
+    align-items: center;
+    height: 5vh;
 }
 
 nav a {

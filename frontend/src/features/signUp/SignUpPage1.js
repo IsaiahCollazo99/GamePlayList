@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setValue } from './signUpSlice';
-import { TextField } from '@material-ui/core';
+import { Button, TextField } from '@material-ui/core';
 
 const SignUpPage1 = ({ handlePageChange }) => {
     const {
@@ -9,6 +9,7 @@ const SignUpPage1 = ({ handlePageChange }) => {
         password,
         confirmPassword
     } = useSelector(state => state.signUp);
+    const [ errors, setErrors ] = useState({email: "", password: ""});
 
     const dispatch = useDispatch();
 
@@ -31,14 +32,21 @@ const SignUpPage1 = ({ handlePageChange }) => {
                 name="email"
                 value={email}
                 onChange={handleChange}
+                helperText={errors.email ? errors.email : null}
+                FormHelperTextProps={{
+                    style: {
+                        color: '#f44336'
+                    }
+                }}
+                autoFocus
                 required
             />
 
             <TextField 
                 type="password"
                 label="Password"
-                value={password} 
                 name="password"
+                value={password} 
                 onChange={handleChange}
                 required
             />
@@ -52,7 +60,13 @@ const SignUpPage1 = ({ handlePageChange }) => {
                 required
             />
             
-            <button type="submit">Submit</button>
+            <Button 
+                type="submit"
+                variant="contained"
+                color="primary"
+            >
+                Next Page
+            </Button>
         </form>
     )
 }
