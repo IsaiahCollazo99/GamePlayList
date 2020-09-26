@@ -44,3 +44,12 @@ export const uploadPicture = async ( folderPath, data, callback ) => {
         throw error;
     }
 }
+
+export const firebaseIsEmailExisting = async ( email ) => {
+    try {
+        const res = await firebase.auth().fetchSignInMethodsForEmail(email);
+        return res.length;
+    } catch ( error ) {
+        throw error;
+    }
+}

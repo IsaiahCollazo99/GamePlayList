@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setValue } from './signUpSlice';
 import { Button, TextField } from '@material-ui/core';
 import { isEmailExisting } from '../../util/apiCalls/postRequests';
+import { firebaseIsEmailExisting } from '../../util/firebaseFunctions';
 
 const SignUpPage1 = ({ handlePageChange }) => {
     const {
@@ -21,10 +22,11 @@ const SignUpPage1 = ({ handlePageChange }) => {
         dispatch(setValue({stateToChange, data}));
     }
 
-    const isValidEmail = async () => {
+    const isEmailExistingCall = async () => {
         try { 
             const data = await isEmailExisting(email);
-            return data.user;
+            const firebaseData = await firebaseIsEmailExisting(email);
+            return data.user || firebaseData;
         } catch ( error ) {
             console.log(error);
         }
@@ -39,7 +41,7 @@ const SignUpPage1 = ({ handlePageChange }) => {
 		} else if(password.length <= 6) {
 			setErrorsState({ ...errorsState, password: true});
 			setErrors({ ...errors, password: "Password must be 7 characters or longer"});
-		} else if(await isValidEmail()) {
+		} else if(await isEmailExistingCall()) {
 			setErrorsState({ password: false, email: true });
 			setErrors({ password: null, email: "A user with that email exists."});
 		} else {
