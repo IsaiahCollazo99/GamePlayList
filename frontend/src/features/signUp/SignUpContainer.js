@@ -14,8 +14,7 @@ const SignUpContainer = () => {
         setPage(page === 1 ? 2 : 1);
     }
 
-    const handleSignUp = async ( e ) => {
-        e.preventDefault();
+    const handleSignUp = async () => {
         try {
             const firebaseUser = await firebaseSignUp(signUp.email, signUp.password, signUp.username);
             const signUpData = { ...signUp, id: firebaseUser.uid };

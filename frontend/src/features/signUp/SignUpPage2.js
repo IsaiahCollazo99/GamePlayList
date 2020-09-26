@@ -1,6 +1,7 @@
-import { Button, MenuItem, TextField } from '@material-ui/core';
+import { Button, TextField } from '@material-ui/core';
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { getUserByUsername } from '../../util/apiCalls/getRequests';
 import { setValue } from './signUpSlice';
 
 const SignUpPage2 = ({ handlePageChange, handleSignUp }) => {
@@ -21,8 +22,26 @@ const SignUpPage2 = ({ handlePageChange, handleSignUp }) => {
         dispatch(setValue({stateToChange, data}));
     }
     
+    const isUsernameExisting = async () => {
+        try {
+            const data = await getUserByUsername(username);
+            return data.user;
+        } catch ( error ) {
+            console.log(error);
+        }
+    }
+
+    const handleSubmit = async ( e ) => {
+        e.preventDefault();
+        if(await isUsernameExisting()) {
+            setErrors({username: "A user with that username exists.", ...errors});
+        } else {
+            handleSignUp();
+        }
+    }
+    
     return (
-        <form onSubmit={handleSignUp} className="signUpPage2">
+        <form onSubmit={handleSubmit} className="signUpPage2">
             <TextField 
                 type="text"
                 label="First Name"
@@ -58,6 +77,7 @@ const SignUpPage2 = ({ handlePageChange, handleSignUp }) => {
                 name="username"
                 value={username}
                 onChange={handleChange}
+                error={errors.username ? true : false}
                 helperText={errors.username ? errors.username : null}
                 InputProps={{
                     style: {
