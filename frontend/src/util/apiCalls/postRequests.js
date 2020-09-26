@@ -31,3 +31,12 @@ export const createDefaultLists = async ( userId ) => {
         throw error;
     }
 }
+
+export const isEmailExisting = async ( email ) => {
+    try { 
+        const res = await axios.post(API + "/api/users/email", { email });
+        return res.data;
+    } catch ( error ) {
+        throw error;
+    }
+}
