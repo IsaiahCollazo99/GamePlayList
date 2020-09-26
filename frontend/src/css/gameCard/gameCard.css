@@ -1,10 +1,16 @@
 .gameCard {
     height: 300px;
     width: 300px;
-    background-color: #f3f3f3;
+    background-color: #254A84;
+    color: #F8F8F6;
     margin: 10px 0px;
     border-radius: 1em;
     box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2), 0px 2px 2px 0px rgba(0,0,0,0.14), 0px 1px 5px 0px rgba(0,0,0,0.12);
+}
+
+.gameCard h3 {
+    font-size: 18px;
+    padding: 0 5px;
 }
 
 .gameCard img {

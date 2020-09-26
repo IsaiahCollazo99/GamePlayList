@@ -5,14 +5,14 @@ const GameCard = ({ game }) => {
     const { name, background_image } = game;
     
     const getDisplayName = () => {
-        if(name.length > 28) {
-            return <p>{name.slice(0, 28) + "..."}</p>
+        if(name.length > 26) {
+            return <p>{name.slice(0, 26) + "..."}</p>
         } else return <p>{name}</p>
     }
     
     return (
         <article className="gameCard">
-            <p>{getDisplayName()}</p>
+            <h3>{getDisplayName()}</h3>
             <img src={background_image} alt={`${name} cover`} />
         </article>
     )

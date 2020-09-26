@@ -6,14 +6,18 @@ import * as serviceWorker from './serviceWorker';
 import { Provider } from 'react-redux';
 import Store from './Store';
 import { BrowserRouter as Router } from 'react-router-dom';
+import { ThemeProvider } from '@material-ui/core';
+import theme from './util/theme';
 
 ReactDOM.render(
   <React.StrictMode>
+  <ThemeProvider theme={theme}>
   <Router>
   <Provider store={Store}>
     <App />
   </Provider>
   </Router>
+  </ThemeProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
