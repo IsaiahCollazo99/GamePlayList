@@ -25,4 +25,30 @@ module.exports = {
             next(error);
         }
     },
+
+    getUserByEmail: async ( req, res, next ) => {
+        try {
+            const { email } = req.body;
+
+            const user = await db.any(`
+                SELECT * FROM USERS
+                WHERE email=$1
+            `, email);
+
+            if(user.length) {
+                res.status(200).json({
+                    status: "OK",
+                    user,
+                    message: "User retrieved."
+                })
+            } else {
+                res.status(200).json({
+                    status: "OK",
+                    message: "User with that email does not exist"
+                })
+            }
+        } catch ( error ) {
+            next(error);
+        }
+    }
 }
