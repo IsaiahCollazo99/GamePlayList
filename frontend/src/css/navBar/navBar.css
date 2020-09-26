@@ -8,10 +8,18 @@ nav {
 }
 
 nav a {
-    color: black;
+    color: #4cd4a2;
     text-decoration: none;
 }
 
 nav a:hover {
-    color: green;
+    color: #8C7682;
+}
+
+.active {
+    color: #8C7682;
+}
+
+.active:hover {
+    color: #8C7682;
 }

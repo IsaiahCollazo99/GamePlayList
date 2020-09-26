@@ -50,5 +50,31 @@ module.exports = {
         } catch ( error ) {
             next(error);
         }
-    }
+    },
+
+    getUserByUsername: async ( req, res, next ) => {
+        try {
+            const { username } = req.params;
+
+            const user = await db.any(`
+                SELECT * FROM USERS
+                WHERE username=$1
+            `, username);
+
+            if(user.length) {
+                res.status(200).json({
+                    status: "OK",
+                    user,
+                    message: "User retrieved."
+                })
+            } else {
+                res.status(200).json({
+                    status: "OK",
+                    message: "User with that username does not exist"
+                })
+            }
+        } catch ( error ) {
+            next(error);
+        }
+    },
 }
