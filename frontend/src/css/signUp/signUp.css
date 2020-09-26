@@ -5,17 +5,36 @@
     justify-content: center;
 }
 
+.signUpContainer h1 {
+    color: #4cd4a2
+}
+
 .signUpContainer form {
     display: flex;
     flex-direction: column;
     width: 25%;
     align-self: center;
+    background-color: #1e375c;
+    padding: 20px 30px;
+    border-radius: 1em;
 }
 
 .signUpPage1 {
     height: 40vh;
     justify-content: space-evenly;
-    background-color: #1e375c;
-    padding: 20px 30px;
-    border-radius: 1em;
+}
+
+.signUpPage2 {
+    height: 60vh;
+    justify-content: space-evenly;
+}
+
+.signUpPage2 .buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.signUpPage2 button {
+    width: 40%;
 }

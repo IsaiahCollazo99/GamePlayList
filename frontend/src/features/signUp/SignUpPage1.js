@@ -98,15 +98,9 @@ const SignUpPage1 = ({ handlePageChange }) => {
                 value={confirmPassword} 
                 name="confirmPassword"
                 onChange={handleChange}
-                helperText={errors.password ? errors.password : null}
                 InputProps={{
                     style: {
                         color: 'white'
-                    }
-                }}
-                FormHelperTextProps={{
-                    style: {
-                        color: '#f44336'
                     }
                 }}
                 required

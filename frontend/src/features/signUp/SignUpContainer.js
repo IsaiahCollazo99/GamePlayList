@@ -36,6 +36,7 @@ const SignUpContainer = () => {
 
     return (
         <main className="signUpContainer">
+            <h1>CREATE AN ACCOUNT {page}/2</h1>
             {getPageDisplay()}
         </main>
     )
