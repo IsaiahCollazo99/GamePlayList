@@ -16,9 +16,9 @@ function App() {
     <Header />
     <div className="App">
     <Switch>
-      <Route exact path="/">
+      <AuthRoute exact path="/">
         Hello
-      </Route>
+      </AuthRoute>
 
       <AuthRoute path="/signup">
         <SignUpContainer />

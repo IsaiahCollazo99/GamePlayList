@@ -1,6 +1,6 @@
 .signInContainer {
     display: flex;
-    height: 95vh;
+    height: 90vh;
     flex-direction: column;
     justify-content: center;
 }
