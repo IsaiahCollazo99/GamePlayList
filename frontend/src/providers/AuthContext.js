@@ -27,7 +27,7 @@ const AuthProvider = ({ children }) => {
 	}
 
 	useEffect(() => {
-		getUserCall()
+		getUserCall();
 	}, [currentUser])
 
 	const updateUser = async (user) => {

@@ -1,11 +1,27 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { PlaylistAdd } from '@material-ui/icons';
 import '../../css/gameCard/gameCard.css';
 import { Menu, MenuItem } from '@material-ui/core';
+import { useSelector } from 'react-redux';
 
 const GameCard = ({ game }) => {
+    const lists = useSelector(state => state.lists);
     const { name, background_image } = game;
     const [ anchor, setAnchor ] = useState(null);
+
+    const getUserLists = async () => {
+        try {
+            if(!lists.length) {
+                
+            }
+        } catch ( error ) {
+            console.log(error);
+        }
+    }
+
+    useEffect(() => {
+        getUserLists();
+    }, [])
     
     const getDisplayName = () => {
         if(name.length > 26) {
