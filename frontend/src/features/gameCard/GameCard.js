@@ -6,8 +6,8 @@ const GameCard = ({ game }) => {
     const { name, background_image } = game;
     
     const getDisplayName = () => {
-        if(name.length > 22) {
-            return name.slice(0, 22) + "...";
+        if(name.length > 26) {
+            return name.slice(0, 26) + "...";
         } else return name;
     }
     
