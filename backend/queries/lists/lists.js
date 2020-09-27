@@ -37,5 +37,31 @@ module.exports = {
         } catch ( error ) {
             next(error);
         }
+    },
+
+    getGameFromList: async ( req, res, next ) => {
+        try {
+            const { id, game_id } = req.params;
+
+            const game = await db.any(`
+                SELECT * FROM list_games
+                WHERE list_id=$1 AND game_id=$2
+            `, [id, game_id]);
+
+            if(game.length) {
+                res.status(200).json({
+                    status: "OK",
+                    game,
+                    message: "Retrieved game"
+                })
+            } else {
+                res.status(200).json({
+                    status: 404,
+                    message: "Game not found"
+                })
+            }
+        } catch ( error ) {
+            next(error);
+        }
     }
 }
