@@ -4,7 +4,7 @@ module.exports = {
     getUserLists: async ( req, res, next ) => {
         try {
             const { id } = req.params;
-            const lists = db.any(`
+            const lists = await db.any(`
                 SELECT * FROM lists
                 WHERE list_owner=$1
             `, id);

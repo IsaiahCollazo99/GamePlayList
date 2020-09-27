@@ -8,9 +8,11 @@ import Store from './Store';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { ThemeProvider } from '@material-ui/core';
 import theme from './util/theme';
+import AuthProvider from './providers/AuthContext';
 
 ReactDOM.render(
   <React.StrictMode>
+  <AuthProvider>
   <ThemeProvider theme={theme}>
   <Router>
   <Provider store={Store}>
@@ -18,6 +20,7 @@ ReactDOM.render(
   </Provider>
   </Router>
   </ThemeProvider>
+  </AuthProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

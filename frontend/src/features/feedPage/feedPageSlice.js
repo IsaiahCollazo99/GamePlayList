@@ -16,6 +16,7 @@ export const feedPageSlice = createSlice({
     reducers: {
         add_games: (( state, { payload } ) => {
             state.games.push(...payload);
+            return state;
         }),
         set_next: (( state, { payload }) => {
             state.next = payload;

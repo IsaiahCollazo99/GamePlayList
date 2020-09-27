@@ -8,7 +8,7 @@ export const listsSlice = createSlice({
             state.push(payload);
         }),
         add_multiple_lists: (( state, { payload }) => {
-            state.push(...payload);
+            return payload;
         })
     }
 })

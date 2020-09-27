@@ -5,9 +5,9 @@ const {
     getUserByUsername,
     getUserById
 } = require("../../queries/users/users");
-const userLists = require("./userLists/userLists");
+const userListsRouter = require("./userLists/userLists");
 
-users.use("/:id/lists", userLists);
+users.use("/:id/lists", userListsRouter);
 
 users.post("/", signUp);
 users.post("/email", getUserByEmail);

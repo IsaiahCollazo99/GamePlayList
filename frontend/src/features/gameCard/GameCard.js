@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { PlaylistAdd } from '@material-ui/icons';
 import '../../css/gameCard/gameCard.css';
 import { Menu, MenuItem } from '@material-ui/core';
@@ -8,20 +8,6 @@ const GameCard = ({ game }) => {
     const lists = useSelector(state => state.lists);
     const { name, background_image } = game;
     const [ anchor, setAnchor ] = useState(null);
-
-    const getUserLists = async () => {
-        try {
-            if(!lists.length) {
-                
-            }
-        } catch ( error ) {
-            console.log(error);
-        }
-    }
-
-    useEffect(() => {
-        getUserLists();
-    }, [])
     
     const getDisplayName = () => {
         if(name.length > 26) {
@@ -40,6 +26,10 @@ const GameCard = ({ game }) => {
     const addToList = () => {
         setAnchor(null);
     }
+
+    const listsDisplay = lists.map((list, i) => {
+        return <MenuItem key={i} value={list.id} onClick={addToList}>{list.list_name}</MenuItem> 
+    })
     
     return (
         <article className="gameCard">
@@ -53,7 +43,7 @@ const GameCard = ({ game }) => {
                     open={Boolean(anchor)}
                     onClose={handleClose}
                 >
-                    <MenuItem onClick={addToList}>Test</MenuItem>
+                    {listsDisplay}
                 </Menu>
             </h3>
             <img src={background_image} alt={`${name} cover`} />
