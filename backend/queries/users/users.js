@@ -77,4 +77,22 @@ module.exports = {
             next(error);
         }
     },
+
+    getUserById: async ( req, res, next ) => {
+        try { 
+            const { id } = req.params;
+            const user = await db.one(`
+                SELECT * FROM users
+                WHERE id=$1
+            `, id) ;
+
+            res.status(200).json({
+                status: "OK",
+                user,
+                message: "User retrieved."
+            })
+        } catch ( error ) {
+            next(error);
+        }
+    }
 }
