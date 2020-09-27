@@ -81,3 +81,12 @@ export const getUserByUsername = async ( username ) => {
         throw error;
     }
 }
+
+export const getUserById = async ( userId ) => {
+    try {
+        const res = await axios.get(API + "/api/users/" + userId);
+        return res.data;
+    } catch ( error ) {
+        throw error;
+    }
+}

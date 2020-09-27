@@ -15,7 +15,7 @@ export const signUpUser = async ( userData ) => {
 export const createList = async ( list_name, list_owner ) => {
     try {
         const res = await axios.post(API + "/api/lists", {list_name, list_owner});
-        console.log(res);
+        return res.data;
     } catch ( error ) {
         throw error;
     }

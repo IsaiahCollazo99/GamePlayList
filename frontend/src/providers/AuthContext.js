@@ -1,5 +1,6 @@
 import React, { createContext, useState, useEffect } from "react";
 import firebase from "../firebase";
+import { getUserById } from "../util/apiCalls/getRequests";
 
 import { getFirebaseIdToken } from "../util/firebaseFunctions";
 
@@ -10,21 +11,36 @@ const AuthProvider = ({ children }) => {
 	const [token, setToken] = useState(null);
 	const [loading, setLoading] = useState(true);
 
-	const updateUser = async (user) => {
+	const getUserCall = async ( backOffTime = 1 ) => {
 		try {
-			if (user) {
-				// Add a time checker. Throw an error if it's taking too long
-				const { uid: id, email, displayName: username } = user;
-				setCurrentUser({ id, email, username });
-				const token = await getFirebaseIdToken();
-				setToken(token);
-				setLoading(false);
-			} else {
-				setCurrentUser(null);
-				setLoading(false);
+			if(currentUser) {
+				if(!currentUser.first_name) {
+					const data = await getUserById(currentUser.id);
+					setCurrentUser({...currentUser, ...data.user});
+				}
 			}
-		} catch (error) {
-			console.log(error);
+		} catch ( error ) {
+			setTimeout(async () => {
+				await getUserCall(backOffTime * 2);
+			}, backOffTime * 1000);
+		}
+	}
+
+	useEffect(() => {
+		getUserCall()
+	}, [currentUser])
+
+	const updateUser = async (user) => {
+		if (user) {
+			// Add a time checker. Throw an error if it's taking too long
+			const { uid: id, email, displayName: username } = user;
+			setCurrentUser({ id, email, username });
+			const token = await getFirebaseIdToken();
+			setToken(token);
+			setLoading(false);
+		} else {
+			setCurrentUser(null);
+			setLoading(false);
 		}
 	};
 

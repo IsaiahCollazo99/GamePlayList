@@ -1,8 +1,9 @@
 .signUpContainer {
     display: flex;
-    height: 100vh;
+    height: 90vh;
     flex-direction: column;
     justify-content: center;
+    width: 100%;
 }
 
 .signUpContainer h1 {
