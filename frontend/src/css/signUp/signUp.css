@@ -1,6 +1,6 @@
 .signUpContainer {
     display: flex;
-    height: 90vh;
+    height: 100vh;
     flex-direction: column;
     justify-content: center;
 }

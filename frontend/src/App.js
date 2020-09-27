@@ -13,8 +13,8 @@ import { AuthRoute } from './util/routesUtil';
 function App() {
   return (
     <AuthProvider>
-    <Header />
     <div className="App">
+    <Header />
     <Switch>
       <AuthRoute exact path="/">
         Hello

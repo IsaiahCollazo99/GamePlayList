@@ -5,7 +5,7 @@ const API = apiURL();
 export const getGames = async ( next ) => {
     try {
         const res = next ? await axios.get(next) :
-            await axios.get("https://api.rawg.io/api/games");
+            await axios.get("https://api.rawg.io/api/games?page_size=30");
         return res.data;
     } catch ( error ) {
         throw error;
