@@ -40,3 +40,12 @@ export const isEmailExisting = async ( email ) => {
         throw error;
     }
 }
+
+export const addGameToList = async ( list_id, game_id ) => {
+    try {
+        const res = await axios.post(API + `/api/lists/${list_id}/games`, { game_id });
+        return res.data;
+    } catch ( error ) {
+        throw error;
+    }
+}

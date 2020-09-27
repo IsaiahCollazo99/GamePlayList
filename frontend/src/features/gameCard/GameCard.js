@@ -3,6 +3,7 @@ import { PlaylistAdd } from '@material-ui/icons';
 import '../../css/gameCard/gameCard.css';
 import { Menu, MenuItem } from '@material-ui/core';
 import { useSelector } from 'react-redux';
+import { addGameToList } from '../../util/apiCalls/postRequests';
 
 const GameCard = ({ game }) => {
     const lists = useSelector(state => state.lists);
@@ -23,8 +24,11 @@ const GameCard = ({ game }) => {
         setAnchor(null);
     }
 
-    const addToList = () => {
+    const addToList = async ( e ) => {
         setAnchor(null);
+        const list_id = e.target.value;
+        const game_id = game.id;
+        await addGameToList(list_id, game_id);
     }
 
     const listsDisplay = lists.map((list, i) => {
