@@ -5,12 +5,10 @@ import { add_games, set_next } from './feedPageSlice';
 import { useBottomScrollListener } from 'react-bottom-scroll-listener';
 import '../../css/feedPage/feedPage.css';
 import GameCard from '../gameCard/GameCard';
-import { TextField } from '@material-ui/core';
 
 const FeedPage = () => {
     const [ loading, setLoading ] = useState(false);
     const feedPage = useSelector(state => state.feedPage);
-    const { system, genre, tag, publisher, developer } = feedPage.filters;
     const dispatch = useDispatch();
 
     const getGamesCall = async () => {
@@ -34,11 +32,6 @@ const FeedPage = () => {
         getGamesCall()
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
-
-    const handleChange = ( e ) => {
-
-    }
-
     const gamesDisplay = feedPage.games.map(( game ) => {
         return (
             <GameCard game={game} key={game.id} />

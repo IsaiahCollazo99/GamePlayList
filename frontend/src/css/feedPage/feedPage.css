@@ -1,16 +1,28 @@
 .feedPageContainer {
     display: grid;
-    grid-template-columns: 15% 85%;
+    grid-template-columns: 20% 80%;
     justify-items: center;
     width: 100%;
 }
 
 .gamesFilters {
     position: fixed;
-    width: 15%;
+    width: 20%;
     display: flex;
     flex-direction: column;
     height: 90vh;
+    padding-top: 40px;
+    padding-left: 10px;
+    color: #4cd4a2;
+}
+
+.gamesFilters form {
+    align-self: center;
+    width: 90%;
+}
+
+.gamesFilters .MuiFormControl-root {
+    margin: 20px 0;
 }
 
 .gamesList {

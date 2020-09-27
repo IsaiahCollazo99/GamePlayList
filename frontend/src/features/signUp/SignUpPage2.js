@@ -128,7 +128,7 @@ const SignUpPage2 = ({ handlePageChange, handleSignUp }) => {
                 }}
                 required
             >
-                <option value="">Select your gender</option>
+                <option value="" disabled>Select your gender</option>
                 <option value="Male">Male</option>
                 <option value="Female">Female</option>
                 <option value="Non-Binary">Male</option>

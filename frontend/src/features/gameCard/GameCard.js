@@ -1,5 +1,5 @@
 import React from 'react';
-import { PlaylistAddCheckIcon, PlaylistAdd } from '@material-ui/icons';
+import { PlaylistAdd } from '@material-ui/icons';
 import '../../css/gameCard/gameCard.css';
 
 const GameCard = ({ game }) => {
