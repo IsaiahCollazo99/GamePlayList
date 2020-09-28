@@ -32,3 +32,16 @@
     grid-column: 2 / 3;
     width: 100%;
 }
+
+.gamesList form {
+    margin-top: 15px;
+    grid-column: 1 / 4;
+    width: 60%;
+    display: flex;
+    justify-content: center;
+}
+
+.gamesList .MuiFormControl-root {
+    width: 50%;
+    margin-right: 10px;
+}
