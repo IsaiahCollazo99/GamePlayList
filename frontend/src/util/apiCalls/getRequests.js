@@ -99,3 +99,12 @@ export const getUserLists = async ( userId ) => {
         throw error;
     }
 }
+
+export const getGameFromList = async ( list_id, game_id ) => {
+    try {
+        const res = await axios.get(API + `/api/lists/${list_id}/games/${game_id}`);
+        return res.data;
+    } catch ( error ) {
+        throw error;
+    }
+}

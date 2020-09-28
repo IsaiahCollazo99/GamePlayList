@@ -4,6 +4,7 @@ import '../../css/gameCard/gameCard.css';
 import { Menu, MenuItem } from '@material-ui/core';
 import { useSelector } from 'react-redux';
 import { addGameToList } from '../../util/apiCalls/postRequests';
+import { getGameFromList } from '../../util/apiCalls/getRequests';
 
 const GameCard = ({ game }) => {
     const lists = useSelector(state => state.lists);
@@ -16,7 +17,7 @@ const GameCard = ({ game }) => {
         } else return name;
     }
 
-    const openLists = ( e ) => {
+    const openLists = async ( e ) => {
         setAnchor(e.currentTarget);
     }
 
@@ -31,8 +32,29 @@ const GameCard = ({ game }) => {
         await addGameToList(list_id, game_id);
     }
 
+    const isGameInList = ( list ) => {
+        const { games: listGames } = list;
+        console.log(list);
+        if(listGames) {
+            for(let i = 0; i < listGames.length; i++) {
+                const listGame = listGames[i];
+                console.log(listGame);
+                if(listGame.game_id === game.id) return true;
+            }
+        }
+        return false;   
+    }
+
     const listsDisplay = lists.map((list, i) => {
-        return <MenuItem key={i} value={list.id} onClick={addToList}>{list.list_name}</MenuItem> 
+        const disabled = isGameInList(list);
+        return (
+            <MenuItem 
+                key={i} 
+                value={list.id} 
+                onClick={addToList}
+                disabled={disabled}
+            >{list.list_name}</MenuItem> 
+        )
     })
     
     return (
