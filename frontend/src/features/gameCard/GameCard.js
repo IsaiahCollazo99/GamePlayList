@@ -4,7 +4,6 @@ import '../../css/gameCard/gameCard.css';
 import { Menu, MenuItem } from '@material-ui/core';
 import { useSelector } from 'react-redux';
 import { addGameToList } from '../../util/apiCalls/postRequests';
-import { getGameFromList } from '../../util/apiCalls/getRequests';
 
 const GameCard = ({ game }) => {
     const lists = useSelector(state => state.lists);
@@ -34,11 +33,9 @@ const GameCard = ({ game }) => {
 
     const isGameInList = ( list ) => {
         const { games: listGames } = list;
-        console.log(list);
         if(listGames) {
             for(let i = 0; i < listGames.length; i++) {
                 const listGame = listGames[i];
-                console.log(listGame);
                 if(listGame.game_id === game.id) return true;
             }
         }

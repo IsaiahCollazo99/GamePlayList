@@ -28,6 +28,7 @@ const AuthProvider = ({ children }) => {
 
 	useEffect(() => {
 		getUserCall();
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [currentUser])
 
 	const updateUser = async (user) => {

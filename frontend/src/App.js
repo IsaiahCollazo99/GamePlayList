@@ -7,11 +7,9 @@ import { add_multiple_lists } from './features/gameCard/listsSlice';
 import Header from './features/header/Header';
 import SignIn from './features/signIn/SignIn';
 import SignUpContainer from './features/signUp/SignUpContainer';
-import AuthProvider, { AuthContext } from './providers/AuthContext';
+import { AuthContext } from './providers/AuthContext';
 import { getUserLists } from './util/apiCalls/getRequests';
 import { AuthRoute } from './util/routesUtil';
-
-// Style everything so far
 
 function App() {
   const lists = useSelector(state => state.lists);
@@ -32,6 +30,7 @@ function App() {
 
   useEffect(() => {
     getUserListsCall();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentUser]);
   
   return (
