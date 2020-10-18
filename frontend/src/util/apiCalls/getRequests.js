@@ -108,3 +108,12 @@ export const getGameFromList = async ( list_id, game_id ) => {
         throw error;
     }
 }
+
+export const getList = async ( list_id ) => {
+    try {
+        const res = await axios.get(API + `/api/lists/${list_id}`);
+        return res.data;
+    } catch ( error ) {
+        throw error;
+    }
+}

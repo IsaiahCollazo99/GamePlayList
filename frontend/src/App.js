@@ -7,6 +7,7 @@ import FeedPage from './features/feedPage/FeedPage';
 import { add_multiple_lists } from './features/gameCard/listsSlice';
 import CreateListForm from './features/general/CreateListForm';
 import Header from './features/header/Header';
+import ListDisplay from './features/listDisplay/ListDisplay';
 import { close_modal } from './features/sideBar/createListSlice';
 import SideBar from './features/sideBar/SideBar';
 import SignIn from './features/signIn/SignIn';
@@ -65,6 +66,10 @@ function App() {
 
       <Route path="/games">
         <FeedPage />
+      </Route>
+
+      <Route path="/list/:id">
+        <ListDisplay />
       </Route>
     </Switch>
     </div>

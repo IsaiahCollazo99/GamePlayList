@@ -1,5 +1,10 @@
 import { Button, makeStyles, TextField } from '@material-ui/core';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { AuthContext } from '../../providers/AuthContext';
+import { createList } from '../../util/apiCalls/postRequests';
+import { add_list } from '../gameCard/listsSlice';
+import { close_modal } from '../sideBar/createListSlice';
 
 const useStyles = makeStyles((theme) => ({
     paper: {
@@ -18,14 +23,19 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const CreateListForm = () => {
+const CreateListForm = ({ handleClose }) => {
     const classes = useStyles();
     const [ listName, setListName ] = useState("");
     const [ visibility, setVisibility ] = useState("public");
+    const { currentUser } = useContext(AuthContext);
 
-    const handleSubmit = ( e ) => {
+    const dispatch = useDispatch();
+
+    const handleSubmit = async ( e ) => {
         e.preventDefault();
-        console.log({listName, visibility});
+        const data = await createList(listName, currentUser.id, visibility);
+        dispatch(add_list(data.list));
+        dispatch(close_modal());
     }
 
     return (

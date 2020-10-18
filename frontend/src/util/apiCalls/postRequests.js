@@ -12,9 +12,9 @@ export const signUpUser = async ( userData ) => {
     }
 }
 
-export const createList = async ( list_name, list_owner ) => {
+export const createList = async ( list_name, list_owner, list_visibilty = 'public' ) => {
     try {
-        const res = await axios.post(API + "/api/lists", {list_name, list_owner});
+        const res = await axios.post(API + "/api/lists", {list_name, list_owner, list_visibilty});
         return res.data;
     } catch ( error ) {
         throw error;
