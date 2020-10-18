@@ -7,11 +7,14 @@ export const createListSlice = createSlice({
     },
     reducers: {
         open_modal: (( state ) => {
-            state.openModal = !state.openModal;
-        })
+            state.openModal = true;
+        }),
+        close_modal: (( state ) => {
+            state.openModal = false;
+        }),
     }
 })
 
-export const { open_modal } = createListSlice.actions;
+export const { open_modal, close_modal } = createListSlice.actions;
 
-export default createListSlice.reducers
+export default createListSlice.reducer;
