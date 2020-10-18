@@ -20,7 +20,7 @@
 }
 
 .allUserLists {
-    min-height: 80%;
+    min-height: 90%;
     display: flex;
     flex-direction: column;
     width: 15vw;
@@ -41,4 +41,8 @@
 
 .allUserLists a:hover {
     color: #9EB3C9;
+}
+
+.allUserLists button {
+    margin: 0 0 25px 0;
 }

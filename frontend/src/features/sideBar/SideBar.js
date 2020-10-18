@@ -1,4 +1,5 @@
-import { Typography } from '@material-ui/core';
+import { Button } from '@material-ui/core';
+import { AddCircleOutline } from '@material-ui/icons';
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
@@ -19,6 +20,13 @@ const SideBar = () => {
             <h1>GPL</h1>
             <section className="allUserLists">
                 <h2>Lists</h2>
+                <Button 
+                    variant="contained" 
+                    color="secondary"
+                    startIcon={<AddCircleOutline />}
+                >
+                    Create a New List
+                </Button>
                 {listsDisplay}
             </section>
         </aside>
