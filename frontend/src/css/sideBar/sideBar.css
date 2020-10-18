@@ -1,4 +1,44 @@
 .sideBar {
     grid-column: 1 / 2;
     grid-row: 1 / 3;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    align-items: center;
+    justify-content: space-between;
+    height: 100vh;
+    overflow-y: scroll;
+    position: fixed;
+}
+
+.sideBar > h1 {
+    align-self: flex-start;
+    margin: 10px 0 0 20px;
+    height: 10%;
+    font-size: 32px;
+}
+
+.allUserLists {
+    min-height: 80%;
+    display: flex;
+    flex-direction: column;
+    width: 15vw;
+    padding: 0 2.5vw;
+    text-align: left;
+}
+
+.allUserLists h2 {
+    font-size: 28px;
+}
+
+.allUserLists a {
+    font-size: 24px;
+    color: #4cd4a2;
+    text-decoration: none;
+    margin: 5px 0;
+}
+
+.allUserLists a:hover {
+    color: #9EB3C9;
 }
