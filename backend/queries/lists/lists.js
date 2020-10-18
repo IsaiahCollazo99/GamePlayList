@@ -63,5 +63,25 @@ module.exports = {
         } catch ( error ) {
             next(error);
         }
+    },
+    getList: async ( req, res, next ) => {
+        try {
+            const { id } = req.params;
+
+            const list = await db.one(`
+                SELECT lists.*, users.first_name, users.last_name, users.username, users.profile_picture
+                FROM lists
+                LEFT JOIN users on lists.list_owner=users.id
+                WHERE lists.id=$1
+            `, id);
+
+            res.status(200).json({
+                status: "OK",
+                list,
+                message: "Retrieved list"
+            })
+        } catch ( error ) {
+            next(error);
+        }
     }
 }
