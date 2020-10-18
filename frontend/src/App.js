@@ -5,6 +5,7 @@ import './App.css';
 import FeedPage from './features/feedPage/FeedPage';
 import { add_multiple_lists } from './features/gameCard/listsSlice';
 import Header from './features/header/Header';
+import SideBar from './features/sideBar/SideBar';
 import SignIn from './features/signIn/SignIn';
 import SignUpContainer from './features/signUp/SignUpContainer';
 import { AuthContext } from './providers/AuthContext';
@@ -36,6 +37,8 @@ function App() {
   return (
     <div className="App">
     <Header />
+    <SideBar />
+
     <Switch>
       <AuthRoute exact path="/">
         Hello

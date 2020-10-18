@@ -1,7 +1,7 @@
 .feedPageContainer {
-    display: grid;
-    grid-template-columns: 20% 80%;
-    justify-items: center;
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+    display: flex;
     width: 100%;
 }
 

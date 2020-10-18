@@ -18,18 +18,16 @@ const style = {
 	'backgroundColor': '#24426f',
 	'display': 'flex',
 	'flexDirection': 'row',
-	'justifyContent': 'space-between',
-	'height': '10vh'
+	'justifyContent': 'flex-end',
+    'height': '10vh',
+    'width': '80%',
+    'align-items': 'center',
 }
 
 const Header = () => {
     return (
         <ElevationScroll>
         <AppBar style={style} className="header">
-            <section className="headerLeft">
-                GPL
-            </section>
-
             <NavBar />
         </AppBar>
         </ElevationScroll>

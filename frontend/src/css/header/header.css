@@ -1,15 +1,8 @@
 .header {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
     font-size: 24px;
-    align-items: center;
-    height: 10vh;
     font-weight: 600;
     top: 0;
     position: fixed;
-    background-color: #24426F;
-    width: 100%
 }
 
 .headerLeft {

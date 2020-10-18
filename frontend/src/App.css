@@ -1,9 +1,6 @@
 .App {
   text-align: center;
-  display: flex;
-  flex-direction: row;
-}
-
-.App > main {
-  margin-top: 10vh;
+  display: grid;
+  grid-template-rows: 10vh auto;
+  grid-template-columns: 20% 80%;
 }

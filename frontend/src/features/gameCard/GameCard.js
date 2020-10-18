@@ -1,14 +1,44 @@
 import React, { useState } from 'react';
 import { PlaylistAdd } from '@material-ui/icons';
 import '../../css/gameCard/gameCard.css';
-import { Menu, MenuItem } from '@material-ui/core';
+import { makeStyles, Menu, MenuItem, Paper } from '@material-ui/core';
 import { useSelector } from 'react-redux';
 import { addGameToList } from '../../util/apiCalls/postRequests';
+
+const useStyles = makeStyles((theme) => ({
+    root: {
+        backgroundColor: '#4cd4a2',
+        height: '300px',
+        width: '350px',
+        color: 'black',
+        margin: '20px 0px',
+        borderRadius: '1em',
+    },
+
+    image: {
+        width: '350px',
+        height: '250px',
+        objectFit: 'cover',
+        objectPosition: 'center',
+        borderBottomLeftRadius: '1em',
+        borderBottomRightRadius: '1em',
+    },
+
+    heading: {
+        display: 'grid',
+        gridTemplateColumns: '90% 10%',
+        alignItems: 'center',
+        justifyContent: 'center',
+        fontSize: '18px',
+        padding: '0 5px',
+    }
+}));
 
 const GameCard = ({ game }) => {
     const lists = useSelector(state => state.lists);
     const { name, background_image } = game;
     const [ anchor, setAnchor ] = useState(null);
+    const classes = useStyles();
     
     const getDisplayName = () => {
         if(name.length > 26) {
@@ -55,10 +85,15 @@ const GameCard = ({ game }) => {
     })
     
     return (
-        <article className="gameCard">
-            <h3>
+        <Paper component="article" className={classes.root + " gameCard"} elevation={3}>
+            <h3 className={classes.heading}>
                 {getDisplayName()} 
-                <PlaylistAdd onClick={openLists} aria-controls={`${game.name} menu`} aria-haspopup="true" />
+                <PlaylistAdd 
+                    onClick={openLists} 
+                    aria-controls={`${game.name} menu`} 
+                    aria-haspopup="true" 
+                    className="gameCardPlaylist"
+                />
                 <Menu 
                     id={`${game.name} menu`}
                     anchorEl={anchor}
@@ -69,8 +104,8 @@ const GameCard = ({ game }) => {
                     {listsDisplay}
                 </Menu>
             </h3>
-            <img src={background_image} alt={`${name} cover`} />
-        </article>
+            <img src={background_image} alt={`${name} cover`} className={classes.image} />
+        </Paper>
     )
 }
 
