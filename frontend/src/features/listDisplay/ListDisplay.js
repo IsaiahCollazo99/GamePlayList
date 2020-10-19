@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { getGameById, getGameFromList, getList, getListGames } from '../../util/apiCalls/getRequests';
 import '../../css/listDisplay/listDisplay.css';
 import GameCard from '../gameCard/GameCard';
+import { Typography } from '@material-ui/core';
 
 const ListDisplay = () => {
     const { id: listId } = useParams();
@@ -22,6 +23,8 @@ const ListDisplay = () => {
 
     useEffect(() => {
         getListCall();
+        setGames([]);
+        setOffset(0);
     }, [listId]);
 
     const getGameDescriptions = async ( listGames ) => {
@@ -53,8 +56,10 @@ const ListDisplay = () => {
 
     return (
         <section className="listDisplayContainer">
-            {list.list_name}
-            {gamesList}
+            <h1>{list.list_name}</h1>
+            <section className="gamesList">
+                {gamesList}
+            </section>
         </section>
     )
 }
