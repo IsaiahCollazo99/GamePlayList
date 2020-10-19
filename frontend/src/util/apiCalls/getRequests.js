@@ -117,3 +117,21 @@ export const getList = async ( list_id ) => {
         throw error;
     }
 }
+
+export const getListGames = async ( list_id ) => {
+    try {
+        const res = await axios.get(API + `/api/lists/${list_id}/games`);
+        return res.data;
+    } catch ( error ) {
+        throw error;
+    }
+}
+
+export const getGameById = async ( gameId ) => {
+    try {
+        const res = await axios.get(`https://api.rawg.io/api/games/${gameId}`);
+        return res.data;
+    } catch ( error ) {
+        throw error;
+    }
+}

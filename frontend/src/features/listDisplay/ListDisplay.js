@@ -1,16 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { getList } from '../../util/apiCalls/getRequests';
+import { getGameById, getGameFromList, getList, getListGames } from '../../util/apiCalls/getRequests';
+import '../../css/listDisplay/listDisplay.css';
+import GameCard from '../gameCard/GameCard';
 
 const ListDisplay = () => {
     const { id: listId } = useParams();
     const [ list, setList ] = useState({});
+    const [ games, setGames ] = useState([]);
+    const [ offset, setOffset ] = useState(0);
 
     const getListCall = async () => {
         try { 
             const data = await getList(listId);
-            console.log(data);
             setList(data.list);
+            getGameDescriptions(data.list.games);
         } catch ( error ) {
             console.log(error);
         }
@@ -20,9 +24,37 @@ const ListDisplay = () => {
         getListCall();
     }, [listId]);
 
+    const getGameDescriptions = async ( listGames ) => {
+        try {
+            const res = [];
+            const length = listGames.length;
+
+            for(let i = offset; i < length; i++) {
+                if(i === offset + 30) break;
+                const game = listGames[i];
+                res.push(await getGameById(game.game_id));
+            }
+
+            setGames(prevState => [...prevState, ...res]);
+
+            if(length >= offset + 30) {
+                setOffset(prevState => prevState + 30);
+            }
+        } catch ( error ) {
+            console.log(error);
+        }
+    }
+
+    const gamesList = games.map((game, i) => {
+        return (
+            <GameCard game={game} key={i} />
+        )
+    })
+
     return (
         <section className="listDisplayContainer">
-            {list.name}
+            {list.list_name}
+            {gamesList}
         </section>
     )
 }

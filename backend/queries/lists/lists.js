@@ -75,6 +75,13 @@ module.exports = {
                 WHERE lists.id=$1
             `, id);
 
+            const listGames = await db.any(`
+                SELECT * FROM list_games
+                WHERE list_id=$1
+            `, list.id);
+
+            list.games = listGames;
+
             res.status(200).json({
                 status: "OK",
                 list,
