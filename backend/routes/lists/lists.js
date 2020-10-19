@@ -1,10 +1,11 @@
-const { createList, addGameToList, getGameFromList, getList } = require("../../queries/lists/lists");
+const { createList, getList } = require("../../queries/lists/lists");
+const listGamesRouter = require("./listGames/listGames");
 
 const lists = require("express").Router();
 
+lists.use("/:id/games", listGamesRouter);
+
 lists.post("/", createList);
-lists.post("/:id/games", addGameToList);
-lists.get("/:id/games/:game_id", getGameFromList);
 lists.get("/:id", getList);
 
 module.exports = lists;
