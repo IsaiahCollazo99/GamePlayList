@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { PlaylistAdd } from '@material-ui/icons';
+import { PlaylistAdd, Close, Check } from '@material-ui/icons';
 import '../../css/gameCard/gameCard.css';
-import { makeStyles, Menu, MenuItem, Paper } from '@material-ui/core';
+import { ListItemIcon, ListItemText, makeStyles, Menu, MenuItem, Paper } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
 import { addGameToList } from '../../util/apiCalls/postRequests';
 import { update_list } from './listsSlice';
@@ -64,6 +64,10 @@ const GameCard = ({ game }) => {
         setAnchor(null);
     }
 
+    const removeFromList = async ( e ) => {
+
+    }
+
     const isGameInList = ( list ) => {
         const { games: listGames } = list;
         if(listGames) {
@@ -76,14 +80,23 @@ const GameCard = ({ game }) => {
     }
 
     const listsDisplay = lists.map((list, i) => {
-        const disabled = isGameInList(list);
+        const gameExistsInList = isGameInList(list);
         return (
             <MenuItem 
                 key={i} 
                 value={list.id} 
-                onClick={addToList}
-                disabled={disabled}
-            >{list.list_name}</MenuItem> 
+                onClick={gameExistsInList ? addToList : removeFromList}
+                className={gameExistsInList ? "added" : null}
+            >
+                <ListItemIcon 
+                    style={{display: gameExistsInList ? "inline-flex" : "none"}}
+                    className="gameListIcon"
+                >
+                    <Close fontSize="small" className="removeFromList" />
+                    <Check fontSize="small" className="addedToList" />
+                </ListItemIcon>
+                <ListItemText primary={list.list_name} />
+            </MenuItem> 
         )
     })
     

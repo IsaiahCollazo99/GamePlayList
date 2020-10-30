@@ -1,3 +1,29 @@
 .gameCardPlaylist:hover {
     cursor: pointer;
 }
+
+.MuiListItem-button:hover:not(.added:hover) {
+    text-decoration: none;
+    background-color: rgba(0, 0, 0, 0.04);
+}
+
+.added:hover {
+    color: red;
+}
+
+.added .removeFromList {
+    display: none;
+    color: red;
+}
+
+.added .addedToList {
+    color: green;
+}
+
+.added:hover .removeFromList {
+    display: inline;
+}
+
+.added:hover .addedToList {
+    display: none;
+}
