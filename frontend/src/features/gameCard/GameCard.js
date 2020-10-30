@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { PlaylistAdd } from '@material-ui/icons';
 import '../../css/gameCard/gameCard.css';
 import { makeStyles, Menu, MenuItem, Paper } from '@material-ui/core';
@@ -41,7 +41,6 @@ const GameCard = ({ game }) => {
     const [ anchor, setAnchor ] = useState(null);
     const classes = useStyles();
     const dispatch = useDispatch();
-    const [ listsAddedToInSession, setlistsAddedToInSession ] = useState(0);
     
     const getDisplayName = () => {
         if(name.length > 26) {
@@ -75,11 +74,6 @@ const GameCard = ({ game }) => {
         }
         return false;   
     }
-
-    useEffect(() => {
-        setlistsAddedToInSession(prevState => prevState + 1);
-        console.log(listsAddedToInSession);
-    }, [lists])
 
     const listsDisplay = lists.map((list, i) => {
         const disabled = isGameInList(list);

@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { getGameById, getGameFromList, getList, getListGames } from '../../util/apiCalls/getRequests';
+import { getGameById, getList } from '../../util/apiCalls/getRequests';
 import '../../css/listDisplay/listDisplay.css';
 import GameCard from '../gameCard/GameCard';
-import { Typography } from '@material-ui/core';
 
 const ListDisplay = () => {
     const { id: listId } = useParams();
@@ -25,6 +24,7 @@ const ListDisplay = () => {
         getListCall();
         setGames([]);
         setOffset(0);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [listId]);
 
     const getGameDescriptions = async ( listGames ) => {
