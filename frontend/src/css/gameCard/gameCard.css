@@ -7,6 +7,15 @@
     background-color: rgba(0, 0, 0, 0.04);
 }
 
+.notAdded .removeFromList,
+.notAdded .addedToList {
+    display: none;
+}
+
+.notAdded:hover .addToList {
+    color: green;
+}
+
 .added:hover {
     color: red;
 }

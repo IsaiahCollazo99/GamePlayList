@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { PlaylistAdd, Close, Check } from '@material-ui/icons';
+import { PlaylistAdd, Close, Check, Add } from '@material-ui/icons';
 import '../../css/gameCard/gameCard.css';
 import { ListItemIcon, ListItemText, makeStyles, Menu, MenuItem, Paper } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
@@ -58,11 +58,14 @@ const GameCard = ({ game }) => {
     }
 
     const addToList = async ( e ) => {
-        const list_id = e.target.value;
+        let targetElement = e.target;
+        while(targetElement.nodeName !== "LI") {
+            targetElement = targetElement.parentNode;
+        }
+        const list_id = targetElement.value;
         const game_id = game.id;
         const { list } = await addGameToList(list_id, game_id);
         dispatch(update_list(list));
-        setAnchor(null);
     }
 
     const removeFromList = async ( e ) => {
@@ -74,7 +77,7 @@ const GameCard = ({ game }) => {
             const list_id = targetElement.value;
             const game_id = game.id;
             const { list } = await removeGameFromList(list_id, game_id);
-            console.log(list);
+            dispatch(update_list(list));
         } catch ( error ) {
             console.log(error);
         }
@@ -98,12 +101,14 @@ const GameCard = ({ game }) => {
                 key={i} 
                 value={list.id} 
                 onClick={gameExistsInList ? removeFromList : addToList}
-                className={gameExistsInList ? "added" : null}
+                className={gameExistsInList ? "added" : "notAdded"}
             >
                 <ListItemIcon 
-                    style={{display: gameExistsInList ? "inline-flex" : "none"}}
                     className="gameListIcon"
                 >
+                    <Add fontSize="small" className="addToList" style={{
+                        display: gameExistsInList ? 'none' : 'inline'
+                    }} />
                     <Close fontSize="small" className="removeFromList" />
                     <Check fontSize="small" className="addedToList" />
                 </ListItemIcon>
