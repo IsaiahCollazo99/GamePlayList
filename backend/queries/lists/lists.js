@@ -25,13 +25,29 @@ module.exports = {
             const { id } = req.params;
             const { game_id } = req.body;
             
-            await db.none(`
+            const listNewGame = await db.one(`
                 INSERT INTO list_games (list_id, game_id)
                 VALUES($1, $2)
+                RETURNING *
             `, [id, game_id]);
+
+            const list = await db.one(`
+                SELECT lists.*, users.first_name, users.last_name, users.username, users.profile_picture
+                FROM lists
+                LEFT JOIN users on lists.list_owner=users.id
+                WHERE lists.id=$1
+            `, listNewGame.list_id);
+
+            const listGames = await db.any(`
+                SELECT * FROM list_games
+                WHERE list_id=$1
+            `, list.id);
+
+            list.games = listGames;
 
             res.status(200).json({
                 status: "OK",
+                list,
                 message: "Successfuly added game"
             })
         } catch ( error ) {

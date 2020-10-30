@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { PlaylistAdd } from '@material-ui/icons';
 import '../../css/gameCard/gameCard.css';
 import { makeStyles, Menu, MenuItem, Paper } from '@material-ui/core';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addGameToList } from '../../util/apiCalls/postRequests';
+import { update_list } from './listsSlice';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
     root: {
         backgroundColor: '#4cd4a2',
         height: '300px',
@@ -39,6 +40,8 @@ const GameCard = ({ game }) => {
     const { name, background_image } = game;
     const [ anchor, setAnchor ] = useState(null);
     const classes = useStyles();
+    const dispatch = useDispatch();
+    const [ listsAddedToInSession, setlistsAddedToInSession ] = useState(0);
     
     const getDisplayName = () => {
         if(name.length > 26) {
@@ -55,10 +58,11 @@ const GameCard = ({ game }) => {
     }
 
     const addToList = async ( e ) => {
-        setAnchor(null);
         const list_id = e.target.value;
         const game_id = game.id;
-        await addGameToList(list_id, game_id);
+        const { list } = await addGameToList(list_id, game_id);
+        dispatch(update_list(list));
+        setAnchor(null);
     }
 
     const isGameInList = ( list ) => {
@@ -71,6 +75,11 @@ const GameCard = ({ game }) => {
         }
         return false;   
     }
+
+    useEffect(() => {
+        setlistsAddedToInSession(prevState => prevState + 1);
+        console.log(listsAddedToInSession);
+    }, [lists])
 
     const listsDisplay = lists.map((list, i) => {
         const disabled = isGameInList(list);
