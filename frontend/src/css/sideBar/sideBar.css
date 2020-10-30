@@ -37,9 +37,14 @@
     color: #4cd4a2;
     text-decoration: none;
     margin: 5px 0;
+    width: fit-content;
 }
 
 .allUserLists a:hover {
+    color: #9EB3C9;
+}
+
+.allUserLists a.active {
     color: #9EB3C9;
 }
 

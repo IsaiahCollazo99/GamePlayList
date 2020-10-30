@@ -33,6 +33,7 @@ const SideBar = () => {
                 >
                     Create a New List
                 </Button>
+                
                 {listsDisplay}
             </section>
         </aside>
