@@ -5,6 +5,7 @@ import { ListItemIcon, ListItemText, makeStyles, Menu, MenuItem, Paper } from '@
 import { useDispatch, useSelector } from 'react-redux';
 import { addGameToList } from '../../util/apiCalls/postRequests';
 import { update_list } from './listsSlice';
+import { removeGameFromList } from '../../util/apiCalls/deleteRequests';
 
 const useStyles = makeStyles(() => ({
     root: {
@@ -65,7 +66,18 @@ const GameCard = ({ game }) => {
     }
 
     const removeFromList = async ( e ) => {
-
+        try {
+            let targetElement = e.target;
+            while(targetElement.nodeName !== "LI") {
+                targetElement = targetElement.parentNode;
+            }
+            const list_id = targetElement.value;
+            const game_id = game.id;
+            const { list } = await removeGameFromList(list_id, game_id);
+            console.log(list);
+        } catch ( error ) {
+            console.log(error);
+        }
     }
 
     const isGameInList = ( list ) => {
@@ -85,7 +97,7 @@ const GameCard = ({ game }) => {
             <MenuItem 
                 key={i} 
                 value={list.id} 
-                onClick={gameExistsInList ? addToList : removeFromList}
+                onClick={gameExistsInList ? removeFromList : addToList}
                 className={gameExistsInList ? "added" : null}
             >
                 <ListItemIcon 
