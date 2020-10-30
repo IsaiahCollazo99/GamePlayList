@@ -2,27 +2,37 @@ import { Button } from '@material-ui/core';
 import { AddCircleOutline, Close } from '@material-ui/icons';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory, useLocation } from 'react-router-dom';
 import '../../css/sideBar/sideBar.css';
 import { open_modal } from './createListSlice';
+import { deleteList } from '../../util/apiCalls/deleteRequests'
+import { remove_list } from '../gameCard/listsSlice';
 
 const SideBar = () => {
     const lists = useSelector(state => state.lists);
     const dispatch = useDispatch();
+    const location = useLocation();
+    const history = useHistory();
 
-    const deleteList = async ( e ) => {
+    const deleteListCall = async ( e ) => {
         let list_id = e.target.getAttribute('value');
         while(!list_id) {
             list_id = e.target.parentNode.getAttribute('value');
         }
-        console.log(list_id);
+        const { deleted } = await deleteList(list_id);
+        dispatch(remove_list(deleted));
+
+        const { pathname } = location;
+        if(pathname.slice(0, 6) === "/list/" && pathname.slice(5) === `${list_id}`) {
+            history.push("/games");
+        } 
     }
 
     const listsDisplay = lists.map(list => {
         return (
             <NavLink to={`/list/${list.id}`} key={list.id} className="listLink">
                 {list.list_name}
-                <Close className="deleteList" onClick={deleteList} value={list.id} />
+                <Close className="deleteList" onClick={deleteListCall} value={list.id} />
             </NavLink>
         )
     })

@@ -7,6 +7,6 @@ lists.use("/:id/games", listGamesRouter);
 
 lists.post("/", createList);
 lists.get("/:id", getList);
-lists.delete("/id", deleteList);
+lists.delete("/:id", deleteList);
 
 module.exports = lists;
