@@ -4,9 +4,8 @@ module.exports = {
     getListGames: async ( req, res, next ) => {
         try {
             const { id } = req.params;
-            console.log(id);
 
-            const listGames = db.any(`
+            const listGames = await db.any(`
                 SELECT * FROM list_games
                 WHERE list_id=$1
             `, id);
