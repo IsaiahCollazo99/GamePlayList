@@ -106,5 +106,26 @@ module.exports = {
         } catch ( error ) {
             next(error);
         }
+    },
+
+    deleteList: async ( req, res, next ) => {
+        try {
+            const { id } = req.params;
+
+            const deleted = await db.one(`
+                DELETE FROM lists
+                WHERE id=$1
+                RETURNING *
+            `, id);
+
+            res.status(200).json({
+                status: "OK",
+                deleted,
+                message: "Successfuly deleted list"
+            })
+            
+        } catch ( error ) {
+            console.log(error);
+        }
     }
 }
