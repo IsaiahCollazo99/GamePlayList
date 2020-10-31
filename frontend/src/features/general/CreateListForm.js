@@ -34,7 +34,7 @@ const CreateListForm = ({ handleClose }) => {
     const handleSubmit = async ( e ) => {
         e.preventDefault();
         const data = await createList(listName, currentUser.id, visibility);
-        dispatch(add_list(data.list));
+        dispatch(add_list(data));
         dispatch(close_modal());
     }
 
