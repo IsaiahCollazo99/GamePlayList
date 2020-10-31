@@ -3,6 +3,7 @@
     height: 90vh;
     flex-direction: column;
     justify-content: center;
+    grid-column: 2 / 3;
 }
 
 .signInContainer h1 {

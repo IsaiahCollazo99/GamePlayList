@@ -25,7 +25,7 @@ const SignUpPage2 = ({ handlePageChange, handleSignUp }) => {
     const isUsernameExisting = async () => {
         try {
             const data = await getUserByUsername(username);
-            return data.user;
+            return data.length;
         } catch ( error ) {
             console.log(error);
         }

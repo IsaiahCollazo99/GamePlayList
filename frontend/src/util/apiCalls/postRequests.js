@@ -5,7 +5,7 @@ const API = apiURL();
 
 export const signUpUser = async ( userData ) => {
     try {
-        const res = await axios.post(API + "/api/users", userData);
+        const res = await axios.post(API + "/api/users/?emailOnly=false", userData);
         return res.data;
     } catch ( error ) {
         throw error;
@@ -14,7 +14,7 @@ export const signUpUser = async ( userData ) => {
 
 export const createList = async ( list_name, list_owner, list_visibilty = 'public' ) => {
     try {
-        const res = await axios.post(API + "/api/lists", {list_name, list_owner, list_visibilty});
+        const res = await axios.post(API + "/api/lists/", {list_name, list_owner, list_visibilty});
         return res.data;
     } catch ( error ) {
         throw error;
@@ -34,8 +34,7 @@ export const createDefaultLists = async ( userId ) => {
 
 export const isEmailExisting = async ( email ) => {
     try { 
-        const res = await axios.post(API + `/api/users/?emailOnly=True`, {email});
-        console.log(res);
+        const res = await axios.get(API + `/api/users/email/?email=${email}`);
         return res.data;
     } catch ( error ) {
         throw error;

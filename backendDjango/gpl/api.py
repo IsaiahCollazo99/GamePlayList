@@ -20,22 +20,15 @@ class UserViewSet( viewsets.ModelViewSet ):
             users = Users.objects.filter(username=username)
             serializer = UsersSerializer(users, many=True)
             return Response(serializer.data)
-        else:
-            user = self.get_object()
-            serializer = UsersSerializer(user)
-            return Response(serializer.data)
-
-    def create( self, request, *args, **kwargs ):
-        print(request.data)
-        email_only = request.query_params["emailOnly"]
-        if email_only:
-            email = request.data["email"]
+        elif pk == "email":
+            email = request.query_params["email"]
             users = Users.objects.filter(email=email)
             serializer = UsersSerializer(users, many=True)
             return Response(serializer.data)
         else:
-            return User(request.data)
-        Response({})
+            user = self.get_object()
+            serializer = UsersSerializer(user)
+            return Response(serializer.data)
 
 class ListsViewSet ( viewsets.ModelViewSet ):
     queryset = Lists.objects.all()

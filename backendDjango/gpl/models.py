@@ -2,7 +2,7 @@ from django.db import models
 
 # Create your models here.
 class Users(models.Model):
-    id = models.CharField(max_length=30, primary_key=True)
+    id = models.CharField(max_length=50, primary_key=True)
     username = models.CharField(max_length=30)
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)

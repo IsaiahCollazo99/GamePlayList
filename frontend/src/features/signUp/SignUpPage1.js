@@ -26,7 +26,7 @@ const SignUpPage1 = ({ handlePageChange }) => {
         try { 
             const data = await isEmailExisting(email);
             const firebaseData = await firebaseIsEmailExisting(email);
-            return data.user || firebaseData;
+            return data.length || firebaseData;
         } catch ( error ) {
             console.log(error);
         }

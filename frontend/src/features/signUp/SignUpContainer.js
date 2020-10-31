@@ -19,8 +19,7 @@ const SignUpContainer = () => {
             const firebaseUser = await firebaseSignUp(signUp.email, signUp.password, signUp.username);
             const signUpData = { ...signUp, id: firebaseUser.uid };
             const data = await signUpUser({...signUpData});
-            const { user } = data;
-            await createDefaultLists(user.id);
+            await createDefaultLists(data.id);
         } catch ( error ) {
             console.log(error);
         }

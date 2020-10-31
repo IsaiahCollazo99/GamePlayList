@@ -75,7 +75,7 @@ export const getFilters = async () => {
 
 export const getUserByUsername = async ( username ) => {
     try {
-        const res = await axios.get(await axios.get(API + `/api/users/username/?username=${username}`));
+        const res = await axios.get(API + `/api/users/username/?username=${username}`);
         return res.data;
     } catch ( error ) {
         throw error;
@@ -85,7 +85,6 @@ export const getUserByUsername = async ( username ) => {
 export const getUserById = async ( userId ) => {
     try {
         const res = await axios.get(API + "/api/users/" + userId + "/");
-        console.log();
         return res.data;
     } catch ( error ) {
         throw error;

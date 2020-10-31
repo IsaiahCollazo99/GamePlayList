@@ -4,6 +4,7 @@
     flex-direction: column;
     justify-content: center;
     width: 100%;
+    grid-column: 2 / 3;
 }
 
 .signUpContainer h1 {
