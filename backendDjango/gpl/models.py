@@ -8,12 +8,13 @@ class Users(models.Model):
     last_name = models.CharField(max_length=30)
     birthday = models.DateField()
     email = models.EmailField()
-    profile_picture = models.CharField(max_length=200)
+    profile_picture = models.CharField(max_length=200, blank=True)
     gender = models.CharField(max_length=20)
 
 class Lists(models.Model):
     list_name = models.CharField(max_length=50)
+    list_owner = models.ForeignKey(Users, related_name="lists", on_delete=models.CASCADE)
 
 class List_games(models.Model):
-    list_id = models.ForeignKey(lists, on_delete=models.CASCADE)
+    list = models.ForeignKey(Lists, related_name="games", on_delete=models.CASCADE) 
     list_game = models.CharField(max_length=50)
