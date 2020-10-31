@@ -34,7 +34,8 @@ export const createDefaultLists = async ( userId ) => {
 
 export const addGameToList = async ( list_id, game_id ) => {
     try {
-        const res = await axios.post(API + `/api/listGames/`, { list: list_id, list_game: game_id });
+        await axios.post(API + `/api/listGames/`, { list: list_id, list_game: game_id });
+        const res = await axios.get(API + `/api/lists/${list_id}/`);
         return res.data;
     } catch ( error ) {
         throw error;

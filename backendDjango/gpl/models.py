@@ -17,4 +17,4 @@ class Lists(models.Model):
 
 class List_games(models.Model):
     list = models.ForeignKey(Lists, related_name="games", on_delete=models.CASCADE) 
-    list_game = models.CharField(max_length=50)
+    list_game = models.IntegerField()

@@ -64,7 +64,7 @@ const GameCard = ({ game }) => {
         }
         const list_id = targetElement.value;
         const game_id = game.id;
-        const { list } = await addGameToList(list_id, game_id);
+        const list = await addGameToList(list_id, game_id);
         dispatch(update_list(list));
     }
 
@@ -85,11 +85,9 @@ const GameCard = ({ game }) => {
 
     const isGameInList = ( list ) => {
         const { games: listGames } = list;
-        if(listGames) {
-            for(let i = 0; i < listGames.length; i++) {
-                const listGame = listGames[i];
-                if(listGame.game_id === game.id) return true;
-            }
+        for(let i = 0; i < listGames.length; i++) {
+            const listGame = listGames[i];
+            if(listGame.list_game == game.id) return true;
         }
         return false;   
     }
