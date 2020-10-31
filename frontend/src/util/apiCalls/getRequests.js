@@ -73,6 +73,15 @@ export const getFilters = async () => {
     }
 }
 
+export const getUserByEmail = async ( email ) => {
+    try { 
+        const res = await axios.get(API + `/api/users/email/?email=${email}`);
+        return res.data;
+    } catch ( error ) {
+        throw error;
+    }
+}
+
 export const getUserByUsername = async ( username ) => {
     try {
         const res = await axios.get(API + `/api/users/username/?username=${username}`);

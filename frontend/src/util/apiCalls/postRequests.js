@@ -32,18 +32,9 @@ export const createDefaultLists = async ( userId ) => {
     }
 }
 
-export const isEmailExisting = async ( email ) => {
-    try { 
-        const res = await axios.get(API + `/api/users/email/?email=${email}`);
-        return res.data;
-    } catch ( error ) {
-        throw error;
-    }
-}
-
 export const addGameToList = async ( list_id, game_id ) => {
     try {
-        const res = await axios.post(API + `/api/lists/${list_id}/games`, { game_id });
+        const res = await axios.post(API + `/api/listGames/`, { list: list_id, list_game: game_id });
         return res.data;
     } catch ( error ) {
         throw error;

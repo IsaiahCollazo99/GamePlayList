@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setValue } from './signUpSlice';
 import { Button, TextField } from '@material-ui/core';
-import { isEmailExisting } from '../../util/apiCalls/postRequests';
 import { firebaseIsEmailExisting } from '../../util/firebaseFunctions';
+import { getUserByEmail } from '../../util/apiCalls/getRequests';
 
 const SignUpPage1 = ({ handlePageChange }) => {
     const {
@@ -24,7 +24,7 @@ const SignUpPage1 = ({ handlePageChange }) => {
 
     const isEmailExistingCall = async () => {
         try { 
-            const data = await isEmailExisting(email);
+            const data = await getUserByEmail(email);
             const firebaseData = await firebaseIsEmailExisting(email);
             return data.length || firebaseData;
         } catch ( error ) {

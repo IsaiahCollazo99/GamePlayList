@@ -2,10 +2,10 @@ import { Button, TextField } from '@material-ui/core';
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { isEmailExisting } from '../../util/apiCalls/postRequests';
 import { firebaseLogIn } from '../../util/firebaseFunctions';
 import { set_value } from './signInSlice';
 import '../../css/signIn/signIn.css';
+import { getUserByEmail } from '../../util/apiCalls/getRequests';
 
 const SignIn = () => {
     const signIn = useSelector(state => state.signIn);
@@ -21,7 +21,7 @@ const SignIn = () => {
 
     const isEmailExistingCall = async () => {
         try {
-            const data = await isEmailExisting(signIn.email);
+            const data = await getUserByEmail(signIn.email);
             return data.length;
         } catch ( error ) {
             console.log(error);
