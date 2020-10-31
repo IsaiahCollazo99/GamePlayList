@@ -14,8 +14,8 @@ const ListDisplay = () => {
     const getListCall = async () => {
         try { 
             const data = await getList(listId);
-            setList(data.list);
-            getGameDescriptions(data.list.games);
+            setList(data);
+            getGameDescriptions(data.games);
         } catch ( error ) {
             console.log(error);
         }
@@ -37,7 +37,7 @@ const ListDisplay = () => {
             for(let i = offset; i < length; i++) {
                 if(i === offset + 30) break;
                 const game = listGames[i];
-                res.push(await getGameById(game.game_id));
+                res.push(await getGameById(game.list_game));
             }
 
             setGames(prevState => [...prevState, ...res]);
