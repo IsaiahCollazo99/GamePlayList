@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
       display: 'flex',
       flexDirection: 'column',
       justifyContent: 'space-between',
-    },
+    }
 }));
 
 const CreateListForm = ({ handleClose }) => {
@@ -46,13 +46,19 @@ const CreateListForm = ({ handleClose }) => {
                 label="List Name"
                 name="listName"
                 value={listName}
+                variant="filled"
+                InputLabelProps={{
+                    shrink: true
+                }}
                 onChange={(e) => setListName(e.target.value)}
                 InputProps={{
                     style: {
                         color: 'white'
                     }
                 }}
+                placeholder="Enter a list name"
                 required
+                className={classes.input}
             />
 
             <TextField 
@@ -63,6 +69,7 @@ const CreateListForm = ({ handleClose }) => {
                 }}
                 name="visibility"
                 value={visibility}
+                variant="filled"
                 onChange={(e) => setVisibility(e.target.value)}
                 SelectProps={{
                     style: {
