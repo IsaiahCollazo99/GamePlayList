@@ -34,7 +34,8 @@ export const createDefaultLists = async ( userId ) => {
 
 export const isEmailExisting = async ( email ) => {
     try { 
-        const res = await axios.post(API + "/api/users/email", { email });
+        const res = await axios.post(API + `/api/users/?emailOnly=True`, {email});
+        console.log(res);
         return res.data;
     } catch ( error ) {
         throw error;
