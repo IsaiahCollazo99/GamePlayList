@@ -16,7 +16,7 @@ const AuthProvider = ({ children }) => {
 			if(currentUser) {
 				if(!currentUser.first_name) {
 					const data = await getUserById(currentUser.id);
-					setCurrentUser({...currentUser, ...data.user});
+					setCurrentUser({...currentUser, ...data});
 				}
 			}
 		} catch ( error ) {

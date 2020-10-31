@@ -1,7 +1,9 @@
 from rest_framework import routers
 from rest_framework_nested import routers as nestedRouters
-from django.urls import include
+from django.urls import include, path
+from django.conf.urls import url
 from .api import UserViewSet, ListGamesViewSet, ListsViewSet
+from .views import firstFunction
 
 router = routers.SimpleRouter()
 

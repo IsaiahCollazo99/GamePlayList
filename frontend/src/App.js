@@ -13,7 +13,6 @@ import SideBar from './features/sideBar/SideBar';
 import SignIn from './features/signIn/SignIn';
 import SignUpContainer from './features/signUp/SignUpContainer';
 import { AuthContext } from './providers/AuthContext';
-import { getUserLists } from './util/apiCalls/getRequests';
 import { AuthRoute } from './util/routesUtil';
 
 function App() {
@@ -23,11 +22,10 @@ function App() {
 
   const dispatch = useDispatch();
 
-  const getUserListsCall = async () => {
+  const setUserLists = () => {
     try {
       if(currentUser && !lists.length) {
-        const data = await getUserLists(currentUser.id);
-        dispatch(add_multiple_lists(data.lists));
+        dispatch(add_multiple_lists(currentUser.lists));
       }
     } catch ( error ) {
       console.log(error);
@@ -35,7 +33,7 @@ function App() {
 }
 
   useEffect(() => {
-    getUserListsCall();
+    setUserLists();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentUser]);
   

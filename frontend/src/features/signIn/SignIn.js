@@ -31,13 +31,13 @@ const SignIn = () => {
     const handleSubmit = async ( e ) => {
         try { 
             e.preventDefault();
-            if(!await isEmailExistingCall()) {
-                setErrors({...errors, email: "There is no record of this email."});
-            } else {
+            // if(!await isEmailExistingCall()) {
+            //     setErrors({...errors, email: "There is no record of this email."});
+            // } else {
                 setErrors({});
                 await firebaseLogIn(signIn.email, signIn.password);
                 history.push("/games");
-            }
+            // }
         } catch ( error ) {
             if(error.code === "auth/wrong-password") {
                 setErrors({...errors, email: "This email/password combination is incorrect."});

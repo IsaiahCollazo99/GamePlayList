@@ -1,4 +1,4 @@
 export const apiURL = () => {
     return window.location.hostname === "localhost" ?
-    "http://localhost:3001" : null // deployed server
+    "http://localhost:8000" : null // deployed server
 }
