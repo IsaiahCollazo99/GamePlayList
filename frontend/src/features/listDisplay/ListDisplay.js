@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { getGameById, getList } from '../../util/apiCalls/getRequests';
 import '../../css/listDisplay/listDisplay.css';
 import GameCard from '../gameCard/GameCard';
+import { useBottomScrollListener } from 'react-bottom-scroll-listener';
 
 const ListDisplay = () => {
     const { id: listId } = useParams();
@@ -29,10 +30,11 @@ const ListDisplay = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [listId]);
 
-    const getGameDescriptions = async ( listGames ) => {
+    const getGameDescriptions = async ( listGames = list.games ) => {
         try {
             const res = [];
             const length = listGames.length;
+            setLoading(true)
 
             for(let i = offset; i < length; i++) {
                 if(i === offset + 30) break;
@@ -44,6 +46,8 @@ const ListDisplay = () => {
 
             if(length >= offset + 30) {
                 setOffset(prevState => prevState + 30);
+            } else {
+                setOffset(length)
             }
 
             setLoading(false);
@@ -58,11 +62,14 @@ const ListDisplay = () => {
         )
     })
 
+    useBottomScrollListener(getGameDescriptions)
+
     return (
         <section className="listDisplayContainer">
             <h1>{list.list_name}</h1>
             <section className="gamesList">
-                {loading ? <p className="loading">Loading</p> : gamesList}
+                {gamesList}
+                {loading ? <p className="loading">Loading...</p> : null}
             </section>
         </section>
     )

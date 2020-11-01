@@ -66,9 +66,9 @@ const FeedPage = () => {
         setSearch(e.target.value);
     }
 
-    const gamesDisplay = feedPage.games.map(( game ) => {
+    const gamesDisplay = feedPage.games.map(( game, i ) => {
         return (
-            <GameCard game={game} key={game.id} />
+            <GameCard game={game} key={i} />
         )
     })
     

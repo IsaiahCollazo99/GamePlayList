@@ -9,6 +9,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import { ThemeProvider } from '@material-ui/core';
 import theme from './util/theme';
 import AuthProvider from './providers/AuthContext';
+import ScrollToTop from './features/general/ScrollToTop';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -16,6 +17,7 @@ ReactDOM.render(
   <ThemeProvider theme={theme}>
   <Router>
   <Provider store={Store}>
+    <ScrollToTop />
     <App />
   </Provider>
   </Router>
