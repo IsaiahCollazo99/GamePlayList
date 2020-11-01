@@ -43,3 +43,10 @@ class ListGamesViewSet ( viewsets.ModelViewSet ):
         permissions.AllowAny
     ]
     serializer_class = ListGamesSerializer
+
+    def destroy ( self, request, *args, **kwargs ):
+        params = kwargs
+        params_list = params['pk'].split("-")
+        game = List_games.objects.filter(list=params_list[0], list_game=params_list[1])
+        game.delete()
+        return Response({"message": "Successfully removed game"})

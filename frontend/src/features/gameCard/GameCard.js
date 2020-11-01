@@ -76,7 +76,7 @@ const GameCard = ({ game }) => {
             }
             const list_id = targetElement.value;
             const game_id = game.id;
-            const { list } = await removeGameFromList(list_id, game_id);
+            const list = await removeGameFromList(list_id, game_id);
             dispatch(update_list(list));
         } catch ( error ) {
             console.log(error);
