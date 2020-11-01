@@ -1,5 +1,5 @@
 import { Button, makeStyles, TextField } from '@material-ui/core';
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, forwardRef } from 'react';
 import { useDispatch } from 'react-redux';
 import { AuthContext } from '../../providers/AuthContext';
 import { createList } from '../../util/apiCalls/postRequests';
@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-const CreateListForm = ({ handleClose }) => {
+const CreateListForm = forwardRef(({ handleClose }, ref) => {
     const classes = useStyles();
     const [ listName, setListName ] = useState("");
     const [ visibility, setVisibility ] = useState("public");
@@ -39,7 +39,7 @@ const CreateListForm = ({ handleClose }) => {
     }
 
     return (
-        <form onSubmit={handleSubmit} className={`${classes.paper} createListModal`}>
+        <form onSubmit={handleSubmit} className={`${classes.paper} createListModal`} ref={ref}>
             <h1>Create A List</h1>
             <TextField
                 type="text"
@@ -87,6 +87,6 @@ const CreateListForm = ({ handleClose }) => {
             <Button variant="contained" type="submit" color="primary">Create List</Button>
         </form>
     )
-}
+})
 
 export default CreateListForm;

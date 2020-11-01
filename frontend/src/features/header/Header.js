@@ -21,7 +21,7 @@ const style = {
 	'justifyContent': 'flex-end',
     'height': '10vh',
     'width': '80%',
-    'align-items': 'center',
+    'alignItems': 'center',
 }
 
 const Header = () => {
