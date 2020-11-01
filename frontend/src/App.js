@@ -8,6 +8,7 @@ import { add_multiple_lists } from './features/gameCard/listsSlice';
 import CreateListForm from './features/general/CreateListForm';
 import Header from './features/header/Header';
 import ListDisplay from './features/listDisplay/ListDisplay';
+import SearchPage from './features/searchPage/SearchPage';
 import { close_modal } from './features/sideBar/createListSlice';
 import SideBar from './features/sideBar/SideBar';
 import SignIn from './features/signIn/SignIn';
@@ -68,6 +69,10 @@ function App() {
 
       <Route path="/list/:id">
         <ListDisplay />
+      </Route>
+
+      <Route path="/search">
+        <SearchPage />
       </Route>
     </Switch>
     </div>

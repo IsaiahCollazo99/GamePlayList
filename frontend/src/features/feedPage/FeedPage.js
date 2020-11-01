@@ -7,6 +7,7 @@ import '../../css/feedPage/feedPage.css';
 import GameCard from '../gameCard/GameCard';
 import { IconButton, InputBase, makeStyles, Paper } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
+import { useHistory } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -34,6 +35,7 @@ const FeedPage = () => {
     const [ search, setSearch ] = useState("");
     const feedPage = useSelector(state => state.feedPage);
     const dispatch = useDispatch();
+    const history = useHistory();
 
     const getGamesCall = async () => {
         try {
@@ -58,7 +60,7 @@ const FeedPage = () => {
 
     const handleSearch = async ( e ) => {
         e.preventDefault()
-        await searchGames(search);
+        history.push("/search", {search});
     }
 
     const handleChange = ( e ) => {

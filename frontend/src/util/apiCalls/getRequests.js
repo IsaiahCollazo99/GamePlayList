@@ -17,7 +17,7 @@ export const searchGames = async ( search, next ) => {
         const res = next ? await axios.get(next) :
             await axios.get("https://api.rawg.io/api/games?page_size=30&search=" + search);
         
-        console.log(res);
+        return res.data;
     } catch ( error ) {
         throw error;
     }
