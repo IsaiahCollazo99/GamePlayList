@@ -27,7 +27,7 @@ SECRET_KEY = '^g@&6w4gcd#_b0s$p7no7i_g(e9o_^!v@c!e05ve@z##m_#%o+'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["localhost", "https://secret-garden-12662.herokuapp.com/"]
+ALLOWED_HOSTS = ["localhost", "https://secret-garden-12662.herokuapp.com"]
 CORS_ORIGIN_ALLOW_ALL = True
 
 # Application definition
