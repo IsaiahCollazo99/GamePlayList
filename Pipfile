@@ -7,7 +7,7 @@ verify_ssl = true
 
 [packages]
 django = "*"
-djangorestgramework = "*"
+djangorestframework = "*"
 django-rest-knox = "*"
 
 [requires]
