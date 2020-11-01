@@ -3,6 +3,8 @@
     font-weight: 600;
     top: 0;
     position: fixed;
+    display: flex;
+    justify-content: space-between;
 }
 
 .headerLeft {

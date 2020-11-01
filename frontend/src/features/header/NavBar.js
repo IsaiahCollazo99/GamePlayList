@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { AuthContext } from '../../providers/AuthContext';
 import { logout } from '../../util/firebaseFunctions';
 
-const NavBar = () => {
+const NavBar = ({ width }) => {
     const { currentUser } = useContext(AuthContext);
 
     const getDisplay = () => {
@@ -28,7 +28,7 @@ const NavBar = () => {
         }
     }
     return (
-        <nav>
+        <nav style={{width: width}}>
             <NavLink to="/games">
                 GAMES
             </NavLink>

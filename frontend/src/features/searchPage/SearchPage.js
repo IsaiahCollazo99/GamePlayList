@@ -4,7 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { searchGames } from '../../util/apiCalls/getRequests';
 import GameCard from '../gameCard/GameCard';
-import { add_games, set_next } from './searchPageSlice';
+import { add_games, set_next, set_search } from './searchPageSlice';
+import '../../css/searchPage/searchPage.css';
 
 const SearchPage = () => {
     const dispatch = useDispatch();
@@ -25,11 +26,13 @@ const SearchPage = () => {
         }
         dispatch(set_next(data.next));
         dispatch(add_games(data.results));
+        dispatch(set_search(historySearch));
     }
     
     useEffect(() => {
         handleSearch();
         dispatch(set_next(null));
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [searchPage.search]);
 
     useBottomScrollListener(handleSearch);
@@ -41,7 +44,7 @@ const SearchPage = () => {
     })
 
     return (
-        <main className="searchPageContainer" style={{gridColumn: '2 / 3'}}>
+        <main className="searchPageContainer">
             {gamesDisplay}
         </main>
     )

@@ -14,6 +14,7 @@ export const getGames = async ( next ) => {
 
 export const searchGames = async ( search, next ) => {
     try {
+        console.log(next);
         const res = next ? await axios.get(next) :
             await axios.get("https://api.rawg.io/api/games?page_size=30&search=" + search);
         
