@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'gpl',
     'corsheaders',
-    'decouple'
+    'python_decouple'
 ]
 
 MIDDLEWARE = [
