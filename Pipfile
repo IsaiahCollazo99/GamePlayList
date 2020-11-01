@@ -23,6 +23,7 @@ six = "==1.15.0"
 sqlparse = "==0.4.1"
 whitenoise = "==5.2.0"
 Django = "==3.1.2"
+django-heroku = "*"
 
 [requires]
 python_version = "3.8"
