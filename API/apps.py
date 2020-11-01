@@ -1,5 +1,5 @@
 from django.apps import AppConfig
 
 
-class GplConfig(AppConfig):
-    name = 'gpl'
+class APIConfig(AppConfig):
+    name = 'API'

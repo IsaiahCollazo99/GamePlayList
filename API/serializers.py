@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from gpl.models import Users, Lists, List_games
+from API.models import Users, Lists, List_games
 
 class ListGamesSerializer( serializers.ModelSerializer ):
     class Meta:

@@ -7,13 +7,13 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('gpl', '0004_auto_20201031_1952'),
+        ('API', '0004_auto_20201031_1952'),
     ]
 
     operations = [
         migrations.AlterField(
             model_name='list_games',
             name='list',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='games', to='gpl.lists'),
+            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='games', to='API.lists'),
         ),
     ]

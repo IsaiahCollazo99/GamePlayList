@@ -6,7 +6,7 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('gpl', '0003_lists_list_owner'),
+        ('API', '0003_lists_list_owner'),
     ]
 
     operations = [

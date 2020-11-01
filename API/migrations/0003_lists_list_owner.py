@@ -7,14 +7,14 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('gpl', '0002_auto_20201031_1850'),
+        ('API', '0002_auto_20201031_1850'),
     ]
 
     operations = [
         migrations.AddField(
             model_name='lists',
             name='list_owner',
-            field=models.ForeignKey(default='6l0KFX7uojfZL8isN5XnB2H2aB53', on_delete=django.db.models.deletion.CASCADE, related_name='lists', to='gpl.users'),
+            field=models.ForeignKey(default='6l0KFX7uojfZL8isN5XnB2H2aB53', on_delete=django.db.models.deletion.CASCADE, related_name='lists', to='API.users'),
             preserve_default=False,
         ),
     ]
