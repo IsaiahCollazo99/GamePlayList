@@ -23,7 +23,7 @@ export const createList = async ( list_name, list_owner, list_visibilty = 'publi
 
 export const createDefaultLists = async ( userId ) => {
     try {
-        const defaultLists = ["Owned", "Playing", "Shelved", "Wish List"];
+        const defaultLists = ["Completed", "Playing", "Shelved", "Wish List"];
         defaultLists.forEach(async ( listName ) => {
             await createList(listName, userId);
         })
