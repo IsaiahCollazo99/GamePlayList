@@ -38,8 +38,8 @@ const SearchPage = () => {
     useEffect(() => {
         const { location: { state } } = history;
         const { search: historySearch } = state;
-        // eslint-disable-next-line react-hooks/exhaustive-deps
         dispatch(set_search(historySearch))
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
     
     useEffect(() => {
