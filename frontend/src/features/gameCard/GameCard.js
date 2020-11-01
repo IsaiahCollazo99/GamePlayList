@@ -87,7 +87,7 @@ const GameCard = ({ game }) => {
         const { games: listGames } = list;
         for(let i = 0; i < listGames.length; i++) {
             const listGame = listGames[i];
-            if(listGame.list_game == game.id) return true;
+            if(Number(listGame.list_game) === game.id) return true;
         }
         return false;   
     }
