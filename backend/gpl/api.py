@@ -52,6 +52,16 @@ class ListGamesViewSet ( viewsets.ModelViewSet ):
     ]
     serializer_class = ListGamesSerializer
 
+    def create( self, request ):
+        data = request.data
+
+        List_games.objects.create(
+            list=Lists.objects.get(id=data["list"]), list_game=data["list_game"], 
+            game_name=data["game_name"], background_image=data["background_image"]
+        )
+        
+        return Response({"message": "Added game to list"})
+
     def destroy ( self, request, *args, **kwargs ):
         params = kwargs
         params_list = params['pk'].split("-")

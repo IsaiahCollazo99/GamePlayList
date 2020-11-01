@@ -18,3 +18,5 @@ class Lists(models.Model):
 class List_games(models.Model):
     list = models.ForeignKey(Lists, related_name="games", on_delete=models.CASCADE) 
     list_game = models.IntegerField()
+    game_name = models.CharField(max_length=200)
+    background_image = models.CharField(max_length=500)

@@ -39,7 +39,12 @@ const ListDisplay = () => {
             for(let i = offset; i < length; i++) {
                 if(i === offset + 30) break;
                 const game = listGames[i];
-                res.push(await getGameById(game.list_game));
+                const gameDisplay = {
+                    id: game.list_game, 
+                    background_image: game.background_image,
+                    name: game.game_name
+                }
+                res.push(gameDisplay);
             }
 
             setGames(prevState => [...prevState, ...res]);

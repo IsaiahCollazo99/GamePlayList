@@ -40,7 +40,6 @@ const FeedPage = () => {
             setLoading(true);
             const next = feedPage.next;
             const { results, next: newNext }  = await getGames(next);
-            console.log({ results, newNext });
             dispatch(add_games(results));
             dispatch(set_next(newNext));
             setLoading(false);

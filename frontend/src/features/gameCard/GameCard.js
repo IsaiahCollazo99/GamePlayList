@@ -63,8 +63,9 @@ const GameCard = ({ game }) => {
             targetElement = targetElement.parentNode;
         }
         const list_id = targetElement.value;
-        const game_id = game.id;
-        const list = await addGameToList(list_id, game_id);
+        const {id: game_id, name, background_image } = game;
+        console.log(game);
+        const list = await addGameToList(list_id, game_id, name, background_image );
         dispatch(update_list(list));
     }
 
