@@ -12,6 +12,17 @@ export const getGames = async ( next ) => {
     }
 }
 
+export const searchGames = async ( search, next ) => {
+    try {
+        const res = next ? await axios.get(next) :
+            await axios.get("https://api.rawg.io/api/games?page_size=30&search=" + search);
+        
+        console.log(res);
+    } catch ( error ) {
+        throw error;
+    }
+}
+
 export const getSystems = async ( next ) => {
     try {
         const systems = [];

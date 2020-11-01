@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { getGameById, getList } from '../../util/apiCalls/getRequests';
+import { getList } from '../../util/apiCalls/getRequests';
 import '../../css/listDisplay/listDisplay.css';
 import GameCard from '../gameCard/GameCard';
 import { useBottomScrollListener } from 'react-bottom-scroll-listener';

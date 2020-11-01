@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getGames } from '../../util/apiCalls/getRequests';
+import { getGames, searchGames } from '../../util/apiCalls/getRequests';
 import { add_games, set_next } from './feedPageSlice';
 import { useBottomScrollListener } from 'react-bottom-scroll-listener';
 import '../../css/feedPage/feedPage.css';
@@ -56,9 +56,9 @@ const FeedPage = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    const handleSearch = ( e ) => {
+    const handleSearch = async ( e ) => {
         e.preventDefault()
-        console.log(search);
+        await searchGames(search);
     }
 
     const handleChange = ( e ) => {
