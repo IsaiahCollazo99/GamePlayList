@@ -14,7 +14,7 @@ export const removeGameFromList = async ( list_id, game_id ) => {
 
 export const deleteList = async ( list_id ) => {
     try {
-        const res = await axios.delete(API + `/api/lists/${list_id}`);
+        const res = await axios.delete(API + `/api/lists/${list_id}/`);
         return res.data;
     } catch ( error ) {
         throw error;

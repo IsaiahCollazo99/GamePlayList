@@ -19,7 +19,7 @@ const SideBar = () => {
         while(!list_id) {
             list_id = e.target.parentNode.getAttribute('value');
         }
-        const { deleted } = await deleteList(list_id);
+        const deleted = await deleteList(list_id);
         dispatch(remove_list(deleted));
 
         const { pathname } = location;

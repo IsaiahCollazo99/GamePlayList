@@ -37,6 +37,14 @@ class ListsViewSet ( viewsets.ModelViewSet ):
     ]
     serializer_class = ListsSerializer
 
+    def destroy ( self, request, *args, **kwargs ):
+        list = self.get_object()
+        serializer = self.get_serializer(list)
+        print(serializer.data)
+        deleted_data = serializer.data.copy()
+        self.perform_destroy(list)
+        return Response(deleted_data)
+
 class ListGamesViewSet ( viewsets.ModelViewSet ):
     queryset = List_games.objects.all()
     permission_classes = [
