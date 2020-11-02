@@ -1,18 +1,20 @@
 import { Button } from '@material-ui/core';
 import { AddCircleOutline, Close } from '@material-ui/icons';
-import React from 'react';
+import React, { useContext } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useHistory, useLocation } from 'react-router-dom';
 import '../../css/sideBar/sideBar.css';
 import { open_modal } from './createListSlice';
 import { deleteList } from '../../util/apiCalls/deleteRequests'
 import { remove_list } from '../gameCard/listsSlice';
+import { AuthContext } from '../../providers/AuthContext';
 
 const SideBar = () => {
     const lists = useSelector(state => state.lists);
     const dispatch = useDispatch();
     const location = useLocation();
     const history = useHistory();
+    const { currentUser } = useContext(AuthContext);
 
     const deleteListCall = async ( e ) => {
         let list_id = e.target.getAttribute('value');
@@ -46,14 +48,14 @@ const SideBar = () => {
             <h1>GPL</h1>
             <section className="allUserLists">
                 <h2>Lists</h2>
-                <Button 
+                { currentUser ? <Button 
                     variant="contained" 
                     color="secondary"
                     startIcon={<AddCircleOutline />}
                     onClick={openModal}
                 >
                     Create a New List
-                </Button>
+                </Button> : null }
                 
                 {listsDisplay}
             </section>
