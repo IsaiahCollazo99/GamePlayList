@@ -31,9 +31,12 @@ export const listsSlice = createSlice({
                     return res;
                 }
             }
+        }),
+        reset_lists: (() => {
+            return [];
         })
     }
 })
 
-export const { add_list, add_multiple_lists, update_list, remove_list } = listsSlice.actions
+export const { add_list, add_multiple_lists, update_list, remove_list, reset_lists } = listsSlice.actions
 export default listsSlice.reducer

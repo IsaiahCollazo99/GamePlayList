@@ -21,7 +21,6 @@ const SignIn = () => {
     const isEmailExistingCall = async () => {
         try {
             const data = await getUserByEmail(signIn.email);
-            console.log(data)
             return data.length;
         } catch ( error ) {
             console.log(error);

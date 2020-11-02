@@ -1,15 +1,23 @@
 import React, { useContext } from 'react';
+import { useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { AuthContext } from '../../providers/AuthContext';
 import { logout } from '../../util/firebaseFunctions';
+import { reset_lists } from '../gameCard/listsSlice';
 
 const NavBar = ({ width }) => {
     const { currentUser } = useContext(AuthContext);
+    const dispatch = useDispatch();
+
+    const handleLogout = () => {
+        dispatch(reset_lists());
+        logout();
+    }
 
     const getDisplay = () => {
         if(currentUser) {
             return (
-                <p className="logout" href="/" onClick={logout}>
+                <p className="logout" href="/" onClick={handleLogout}>
                     LOG OUT
                 </p>
             )
