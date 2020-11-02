@@ -57,6 +57,7 @@ const SignUpPage1 = ({ handlePageChange }) => {
                 type="email"
                 label="Email"
                 name="email"
+                variant="filled"
                 value={email}
                 onChange={handleChange}
                 error={errors.email ? true : false}
@@ -79,6 +80,7 @@ const SignUpPage1 = ({ handlePageChange }) => {
                 type="password"
                 label="Password"
                 name="password"
+                variant="filled"
                 value={password} 
                 onChange={handleChange}
                 error={errors.password ? true : false}
@@ -101,6 +103,7 @@ const SignUpPage1 = ({ handlePageChange }) => {
                 label="Confirm Password"
                 value={confirmPassword} 
                 name="confirmPassword"
+                variant="filled"
                 onChange={handleChange}
                 InputProps={{
                     style: {

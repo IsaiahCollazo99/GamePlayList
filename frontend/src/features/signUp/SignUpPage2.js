@@ -46,6 +46,7 @@ const SignUpPage2 = ({ handlePageChange, handleSignUp }) => {
                 type="text"
                 label="First Name"
                 name="first_name"
+                variant="filled"
                 value={first_name}
                 onChange={handleChange}
                 InputProps={{
@@ -61,6 +62,7 @@ const SignUpPage2 = ({ handlePageChange, handleSignUp }) => {
                 type="text"
                 label="Last Name"
                 name="last_name"
+                variant="filled"
                 value={last_name}
                 onChange={handleChange}
                 InputProps={{
@@ -75,6 +77,7 @@ const SignUpPage2 = ({ handlePageChange, handleSignUp }) => {
                 type="text"
                 label="Username"
                 name="username"
+                variant="filled"
                 value={username}
                 onChange={handleChange}
                 error={errors.username ? true : false}
@@ -95,6 +98,7 @@ const SignUpPage2 = ({ handlePageChange, handleSignUp }) => {
             <TextField 
                 type="date"
                 label="Birthday"
+                variant="filled"
                 InputLabelProps={{
                     shrink: true
                 }}
@@ -112,6 +116,7 @@ const SignUpPage2 = ({ handlePageChange, handleSignUp }) => {
             <TextField 
                 select
                 label="Gender"
+                variant="filled"
                 InputLabelProps={{
                     shrink: true
                 }}

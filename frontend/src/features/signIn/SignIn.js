@@ -5,6 +5,7 @@ import { firebaseLogIn } from '../../util/firebaseFunctions';
 import { set_value } from './signInSlice';
 import '../../css/signIn/signIn.css';
 import { getUserByEmail } from '../../util/apiCalls/getRequests';
+import { Link } from 'react-router-dom';
 
 const SignIn = () => {
     const signIn = useSelector(state => state.signIn);
@@ -53,6 +54,7 @@ const SignIn = () => {
                     type="email"
                     label="Email"
                     name="email"
+                    variant="filled"
                     value={signIn.email}
                     onChange={handleChange}
                     error={errors.email ? true : false}
@@ -75,6 +77,7 @@ const SignIn = () => {
                     type="password"
                     label="Password"
                     name="password"
+                    variant="filled"
                     value={signIn.password} 
                     onChange={handleChange}
                     InputProps={{
@@ -103,6 +106,7 @@ const SignIn = () => {
                 </Button>
 
             </form>
+            <Link to="/signup" className="signUpSwitch">Don't have an account? Sign up</Link>
         </main>
         
     )

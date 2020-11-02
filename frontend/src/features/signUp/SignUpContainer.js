@@ -5,6 +5,7 @@ import { firebaseSignUp } from '../../util/firebaseFunctions';
 import SignUpPage1 from './SignUpPage1';
 import SignUpPage2 from './SignUpPage2';
 import '../../css/signUp/signUp.css';
+import { Link } from 'react-router-dom';
 
 const SignUpContainer = () => {
     const [ page, setPage ] = useState(1);
@@ -36,6 +37,7 @@ const SignUpContainer = () => {
         <main className="signUpContainer">
             <h1>CREATE AN ACCOUNT {page}/2</h1>
             {getPageDisplay()}
+            <Link to="/login" className="signUpSwitch">Already signed up? Log in</Link>
         </main>
     )
 }
