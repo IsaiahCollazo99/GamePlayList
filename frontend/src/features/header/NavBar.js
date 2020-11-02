@@ -9,9 +9,9 @@ const NavBar = ({ width }) => {
     const getDisplay = () => {
         if(currentUser) {
             return (
-                <NavLink exact to="/" onClick={logout}>
+                <p className="logout" href="/" onClick={logout}>
                     LOG OUT
-                </NavLink>
+                </p>
             )
         } else {
             return (
@@ -29,7 +29,7 @@ const NavBar = ({ width }) => {
     }
     return (
         <nav style={{width: width}}>
-            <NavLink to="/games">
+            <NavLink exact to="/">
                 GAMES
             </NavLink>
 

@@ -1,7 +1,6 @@
 import { Button, TextField } from '@material-ui/core';
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
 import { firebaseLogIn } from '../../util/firebaseFunctions';
 import { set_value } from './signInSlice';
 import '../../css/signIn/signIn.css';
@@ -10,7 +9,6 @@ import { getUserByEmail } from '../../util/apiCalls/getRequests';
 const SignIn = () => {
     const signIn = useSelector(state => state.signIn);
     const dispatch = useDispatch();
-    const history = useHistory();
     const [ errors, setErrors ] = useState({});
 
     const handleChange = ( e ) => {
@@ -36,7 +34,6 @@ const SignIn = () => {
             } else {
                 setErrors({});
                 await firebaseLogIn(signIn.email, signIn.password);
-                history.push("/games");
             }
         } catch ( error ) {
             if(error.code === "auth/wrong-password") {
@@ -95,6 +92,16 @@ const SignIn = () => {
                 >
                     Log In
                 </Button>
+
+                <Button
+                    type="button"
+                    variant="contained"
+                    color="primary"
+                    onClick={() => firebaseLogIn("demouser@demo.com", "testtest")}
+                >
+                    Demo Log In
+                </Button>
+
             </form>
         </main>
         

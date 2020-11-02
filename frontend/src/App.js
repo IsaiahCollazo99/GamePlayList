@@ -51,10 +51,6 @@ function App() {
     </Modal>
 
     <Switch>
-      <AuthRoute exact path="/">
-        Hello
-      </AuthRoute>
-
       <AuthRoute path="/signup">
         <SignUpContainer />
       </AuthRoute>
@@ -63,7 +59,7 @@ function App() {
         <SignIn />
       </AuthRoute>
 
-      <Route path="/games">
+      <Route exact path="/">
         <FeedPage />
       </Route>
 

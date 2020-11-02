@@ -20,13 +20,19 @@ nav {
     width: 25%;
 }
 
-nav a {
+.logout {
+    margin: 0;
+    padding: 0;
+}
+
+nav a, .logout {
     color: #4cd4a2;
     text-decoration: none;
 }
 
-nav a:hover {
+nav a:hover, .logout:hover {
     color: #9EB3C9;
+    cursor: pointer;
 }
 
 .active {
